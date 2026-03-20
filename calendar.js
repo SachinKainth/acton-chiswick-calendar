@@ -9,7 +9,7 @@ const months = [
 ]
 
 document.getElementById("title").textContent =
-	`Acton & Chiswick Events Calendar ${YEAR}`
+	`Acton & Chiswick Markets Calendar ${YEAR}`
 
 months.forEach((m, i) => {
 
@@ -30,9 +30,9 @@ function recurringEvents(date) {
 	if (date.getDay() !== 0) return list
 
 	let sunday = Math.ceil(date.getDate() / 7)
-  const ymd = formatDate(date)
+    const ymd = formatDate(date)
 
-	if (sunday === 1 && date.getMonth() !== 0) {
+	if (sunday === 1) {
 		list.push({
 			name: "Flowers",
 			location: "Old Market Place",
@@ -41,6 +41,26 @@ function recurringEvents(date) {
 			class: "flowers",
 			link: "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/" + ymd
 		})
+
+		list.push({
+			name: "Duck Pond",
+			location: "Chiswick House & Gardens",
+			time: "10:00–16:00",
+			area: "chiswick",
+			class: "duck",
+			link: "https://chiswickcalendar.co.uk/event/duck-pond-market-chiswick-house-gardens/" + ymd
+		})
+
+		if (date.getMonth() !== 0) {
+			list.push({
+				name: "Car Boot Sale",
+				location: "Chiswick School",
+				time: "06:30–12:30",
+				area: "chiswick",
+				class: "car",
+				link: "https://chiswickcalendar.co.uk/event/chiswick-car-boot-sale-chiswick-school/" + ymd
+			})
+		}
 	}
 
 	if (sunday === 2) {
@@ -80,7 +100,7 @@ function recurringEvents(date) {
 }
 
 function highlightToday(date, today, dayDiv) {
-    if (date.getFullYear() === today.getFullYear() &&
+	if (date.getFullYear() === today.getFullYear() &&
       date.getMonth() === today.getMonth() &&
       date.getDate() === today.getDate()) {
       dayDiv.classList.add("today")
@@ -88,9 +108,9 @@ function highlightToday(date, today, dayDiv) {
 }
 
 function formatDate(date) {
-  return date.getFullYear() + "-" +
-    String(date.getMonth() + 1).padStart(2, "0") + "-" +
-    String(date.getDate()).padStart(2, "0")
+	return date.getFullYear() + "-" +
+    	String(date.getMonth() + 1).padStart(2, "0") + "-" +
+    	String(date.getDate()).padStart(2, "0")
 }
 
 function buildCalendar() {
@@ -125,7 +145,7 @@ function buildCalendar() {
 			else if (weekday === 0) dayDiv.className = "day sunday"
 			else dayDiv.className = "day"
 
-      highlightToday(date, today, dayDiv)
+            highlightToday(date, today, dayDiv)
 			
 			let dateDiv = document.createElement("div")
 			dateDiv.className = "date"
@@ -153,9 +173,7 @@ function buildCalendar() {
 				if (e.link) {
 
 					event.innerHTML =
-						`<a href="${e.link}" target="_blank">
-<strong>${e.name}</strong> | ${e.location} | ${e.time}
-</a>`
+						`<a href="${e.link}" target="_blank"><strong>${e.name}</strong> | ${e.location} | ${e.time}</a>`
 
 				} else {
 
