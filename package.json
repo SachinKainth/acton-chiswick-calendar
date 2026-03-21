@@ -1,0 +1,25 @@
+{
+  "name": "acton-and-chiswick-calendar",
+  "version": "1.0.0",
+  "description": "<h1>Markets in Acton and Chiswick in 2026</h1>",
+  "main": "calendar.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SachinKainth/acton-chiswick-calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SachinKainth/acton-chiswick-calendar/issues"
+  },
+  "homepage": "https://github.com/SachinKainth/acton-chiswick-calendar#readme",
+  "devDependencies": {
+    "eslint": "^10.1.0",
+    "jest": "^30.3.0"
+  }
+}

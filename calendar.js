@@ -205,3 +205,5 @@ function renderEvents(date) {
 
 	return eventsDiv
 }
+
+module.exports = { setPageTitle };
