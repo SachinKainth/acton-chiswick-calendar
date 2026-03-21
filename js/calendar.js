@@ -86,24 +86,7 @@ export function getTodayNavElement() {
 		: null
 }
 
-function initCalendar() {
-	setPageTitle()
-	setMonthLinks()
-	setTodayLink()
-	buildCalendar()
-}
-
-function setTodayLink() {
-	const todayNav = getTodayNavElement()
-	if (!todayNav) return
-
-	let link = document.createElement("a")
-	link.href = `#today`
-	link.textContent = "Today"
-	todayNav.appendChild(link)
-}
-
-function setMonthLinks() {
+export function setMonthLinks() {
 	const monthNav = getMonthNavElement()
 	if (!monthNav) return
 
@@ -113,6 +96,23 @@ function setMonthLinks() {
 		link.textContent = m.slice(0, 3)
 		monthNav.appendChild(link)
 	})
+}
+
+export function setTodayLink() {
+	const todayNav = getTodayNavElement()
+	if (!todayNav) return
+
+	let link = document.createElement("a")
+	link.href = `#today`
+	link.textContent = "Today"
+	todayNav.appendChild(link)
+}
+
+function initCalendar() {
+	setPageTitle()
+	setMonthLinks()
+	setTodayLink()
+	buildCalendar()
 }
 
 function recurringEvents(date) {
