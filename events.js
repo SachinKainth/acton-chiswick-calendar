@@ -51,3 +51,68 @@ const events = [
 	}
 
 ]
+
+const regularEvents = [
+
+	{
+		sunday: 1,
+		name: "Flowers",
+		location: "Old Market Place",
+		time: "09:00–15:30",
+		area: "chiswick",
+		class: "flowers",
+		link: "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/"
+	},
+
+	{
+		sunday: 1,
+		name: "Duck Pond",
+		location: "Chiswick House & Gardens",
+		time: "10:00–16:00",
+		area: "chiswick",
+		class: "duck",
+		link: "https://chiswickcalendar.co.uk/event/duck-pond-market-chiswick-house-gardens/"
+	},
+
+	{
+		sunday: 1,
+		skipJanuary: true,
+		name: "Car Boot Sale",
+		location: "Chiswick School",
+		time: "06:30–12:30",
+		area: "chiswick",
+		class: "car",
+		link: "https://chiswickcalendar.co.uk/event/chiswick-car-boot-sale-chiswick-school/"
+	},
+
+	{
+		sunday: 2,
+		name: "Antiques",
+		location: "Old Market Place",
+		time: "09:00–15:00",
+		area: "chiswick",
+		class: "antiques",
+		link: "https://chiswickcalendar.co.uk/event/chiswick-antiques-vintage-market-old-market-place/"
+	},
+
+	{
+		sunday: 3,
+		name: "Cheese",
+		location: "Old Market Place",
+		time: "09:30–15:00",
+		area: "chiswick",
+		class: "cheese",
+		link: "https://chiswickcalendar.co.uk/event/chiswick-cheese-market-the-old-market-place/"
+	},
+
+	{
+		sunday: 4,
+		name: "FoodSt",
+		location: "Old Market Place",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "streetfood",
+		link: "https://chiswickcalendar.co.uk/event/foodst-old-market-place/"
+	}
+
+]

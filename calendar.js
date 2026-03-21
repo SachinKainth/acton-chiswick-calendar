@@ -36,79 +36,42 @@ function setPageTitle() {
 }
 
 function recurringEvents(date) {
-  
-	let list = []
 
-	if (date.getDay() !== 0) return list
+	if (!isSunday(date)) return []
 
-	let sunday = Math.ceil(date.getDate() / 7)
-    const ymd = formatDate(date)
+	const sunday = sundayOfMonth(date)
+	const ymd = formatDate(date)
 
-	if (sunday === 1) {
-		list.push({
-			name: "Flowers",
-			location: "Old Market Place",
-			time: "09:00–15:30",
-			area: "chiswick",
-			class: "flowers",
-			link: "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/" + ymd
+	return eventsForSunday(sunday, date, ymd)
+}
+
+function isSunday(date) {
+	return date.getDay() === 0
+}
+
+function sundayOfMonth(date) {
+	return Math.ceil(date.getDate() / 7)
+}
+
+function isJanuary(date) {
+	return date.getMonth() === 0
+}
+
+function eventsForSunday(sunday, date, ymd) {
+
+	return regularEvents
+		.filter(event => {
+
+			if (event.sunday !== sunday) return false
+
+			if (event.skipJanuary && date.getMonth() === 0) return false
+
+			return true
 		})
-
-		list.push({
-			name: "Duck Pond",
-			location: "Chiswick House & Gardens",
-			time: "10:00–16:00",
-			area: "chiswick",
-			class: "duck",
-			link: "https://chiswickcalendar.co.uk/event/duck-pond-market-chiswick-house-gardens/" + ymd
-		})
-
-		if (date.getMonth() !== 0) {
-			list.push({
-				name: "Car Boot Sale",
-				location: "Chiswick School",
-				time: "06:30–12:30",
-				area: "chiswick",
-				class: "car",
-				link: "https://chiswickcalendar.co.uk/event/chiswick-car-boot-sale-chiswick-school/" + ymd
-			})
-		}
-	}
-
-	if (sunday === 2) {
-		list.push({
-			name: "Antiques",
-			location: "Old Market Place",
-			time: "09:00–15:00",
-			area: "chiswick",
-			class: "antiques",
-			link: "https://chiswickcalendar.co.uk/event/chiswick-antiques-vintage-market-old-market-place/" + ymd
-		})
-	}
-
-	if (sunday === 3) {
-		list.push({
-			name: "Cheese",
-			location: "Old Market Place",
-			time: "09:30–15:00",
-			area: "chiswick",
-			class: "cheese",
-			link: "https://chiswickcalendar.co.uk/event/chiswick-cheese-market-the-old-market-place/" + ymd
-		})
-	}
-
-	if (sunday === 4) {
-		list.push({
-			name: "FoodSt",
-			location: "Old Market Place",
-			time: "11:00–16:00",
-			area: "chiswick",
-			class: "streetfood",
-			link: "https://chiswickcalendar.co.uk/event/foodst-old-market-place/" + ymd
-		})
-	}
-
-	return list
+		.map(event => ({
+			...event,
+			link: event.link + ymd
+		}))
 }
 
 function highlightToday(date, today, dayDiv) {
@@ -130,80 +93,108 @@ function buildCalendar() {
 
 	calendar.innerHTML = ""
 
-	let today = new Date()
-	let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+	const today = new Date()
+	const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 	for (let m = 0; m < 12; m++) {
 
-		let monthDiv = document.createElement("div")
-		monthDiv.className = "month"
-		monthDiv.id = `month${m}`
+		const monthDiv = createMonth(m)
 
-		let header = document.createElement("h2")
-		header.textContent = months[m]
-
-		monthDiv.appendChild(header)
-
-		let days = new Date(YEAR, m + 1, 0).getDate()
+		const days = new Date(YEAR, m + 1, 0).getDate()
 
 		for (let d = 1; d <= days; d++) {
 
-			let date = new Date(YEAR, m, d)
+			const date = new Date(YEAR, m, d)
+			const weekday = date.getDay()
 
-			let dayDiv = document.createElement("div")
+			const dayDiv = createDay(date, weekday, today, weekdays)
 
-			let weekday = date.getDay()
+			const eventsDiv = renderEvents(date)
 
-			if (weekday === 6) dayDiv.className = "day saturday"
-			else if (weekday === 0) dayDiv.className = "day sunday"
-			else dayDiv.className = "day"
-
-            highlightToday(date, today, dayDiv)
-			
-			let dateDiv = document.createElement("div")
-			dateDiv.className = "date"
-			dateDiv.innerHTML = `${d} <span class="weekday">(${weekdays[weekday]})</span>`
-
-			let eventsDiv = document.createElement("div")
-			eventsDiv.className = "events"
-
-			let key = formatDate(date)
-
-			let dayEvents = []
-			dayEvents = dayEvents.concat(recurringEvents(date))
-
-			events.forEach(e => {
-				if (e.date === key) dayEvents.push(e)
-			})
-
-			dayEvents.forEach(e => {
-
-				let event = document.createElement("div")
-
-				event.className = "event " + e.class
-
-				if (e.link) {
-					event.innerHTML =
-						`<a href="${e.link}" target="_blank"><strong>${e.name}</strong> | ${e.location} | ${e.time}</a>`
-				} else {
-					event.innerHTML =
-						`<strong>${e.name}</strong> | ${e.location} | ${e.time}`
-				}
-
-				eventsDiv.appendChild(event)
-
-			})
-
-			dayDiv.appendChild(dateDiv)
 			dayDiv.appendChild(eventsDiv)
 
 			monthDiv.appendChild(dayDiv)
-
 		}
 
 		calendar.appendChild(monthDiv)
-
 	}
-
 }
 
+
+function createMonth(m) {
+
+	const monthDiv = document.createElement("div")
+	monthDiv.className = "month"
+	monthDiv.id = `month${m}`
+
+	const header = document.createElement("h2")
+	header.textContent = months[m]
+
+	monthDiv.appendChild(header)
+
+	return monthDiv
+}
+
+
+function createDay(date, weekday, today, weekdays) {
+
+	const dayDiv = document.createElement("div")
+
+	if (weekday === 6) dayDiv.className = "day saturday"
+	else if (weekday === 0) dayDiv.className = "day sunday"
+	else dayDiv.className = "day"
+
+	highlightToday(date, today, dayDiv)
+
+	const dateDiv = document.createElement("div")
+	dateDiv.className = "date"
+	dateDiv.innerHTML = `${date.getDate()} <span class="weekday">(${weekdays[weekday]})</span>`
+
+	dayDiv.appendChild(dateDiv)
+
+	return dayDiv
+}
+
+
+function getEventsForDate(date) {
+
+	const key = formatDate(date)
+
+	let dayEvents = []
+
+	dayEvents = dayEvents.concat(recurringEvents(date))
+
+	events.forEach(e => {
+		if (e.date === key) dayEvents.push(e)
+	})
+
+	return dayEvents
+}
+
+
+function renderEvents(date) {
+
+	const eventsDiv = document.createElement("div")
+	eventsDiv.className = "events"
+
+	const dayEvents = getEventsForDate(date)
+
+	dayEvents.forEach(e => {
+
+		const event = document.createElement("div")
+		event.className = "event " + e.class
+
+		if (e.link) {
+			event.innerHTML =
+				`<a href="${e.link}" target="_blank"><strong>${e.name}</strong> | ${e.location} | ${e.time}</a>`
+		} else {
+			event.innerHTML =
+				`<strong>${e.name}</strong> | ${e.location} | ${e.time}`
+		}
+
+		eventsDiv.appendChild(event)
+
+	})
+
+	return eventsDiv
+}
