@@ -72,15 +72,15 @@ function recurringEvents(date) {
 	return eventsForSunday(sunday, date, ymd)
 }
 
-function isSunday(date) {
+export function isSunday(date) {
 	return date.getDay() === 0
 }
 
-function sundayOfMonth(date) {
+export function sundayOfMonth(date) {
 	return Math.ceil(date.getDate() / 7)
 }
 
-function eventsForSunday(sunday, date, ymd) {
+export function eventsForSunday(sunday, date, ymd) {
 	return regularEvents
 		.filter(event => {
 
@@ -96,7 +96,7 @@ function eventsForSunday(sunday, date, ymd) {
 		}))
 }
 
-function highlightToday(date, today, dayDiv) {
+export function highlightToday(date, today, dayDiv) {
 	if (
 		date.getFullYear() === today.getFullYear() &&
 		date.getMonth() === today.getMonth() &&
@@ -180,7 +180,7 @@ function createDay(date, weekday, today, weekdays) {
 	return dayDiv
 }
 
-function getEventsForDate(date) {
+export function getEventsForDate(date) {
 
 	const key = formatDate(date)
 
