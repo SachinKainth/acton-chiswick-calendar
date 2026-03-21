@@ -38,7 +38,7 @@ const events = [
 		area: "acton",
 		class: "makers",
 		link: "https://www.youractonbid.co.uk/your-acton-makers-market/"
-	 },
+	},
 
 	{
 		date: "2026-03-29",

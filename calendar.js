@@ -2,26 +2,38 @@ const YEAR = 2026
 
 const calendar = document.getElementById("calendar")
 const monthNav = document.getElementById("monthNav")
+const todayNav = document.getElementById("todayNav")
 
 const months = [
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November", "December"
 ]
 
-document.getElementById("title").textContent =
-	`Acton & Chiswick Markets Calendar ${YEAR}`
+setPageTitle()
+setMonthLinks()
+setTodayLink()
+buildCalendar()
 
-months.forEach((m, i) => {
-
+function setTodayLink() {
 	let link = document.createElement("a")
+	link.href = `#today`
+	link.textContent = 'Today'
+	todayNav.appendChild(link)
+}
 
-	link.href = `#month${i}`
+function setMonthLinks() {
+	months.forEach((m, i) => {
+		let link = document.createElement("a")
+		link.href = `#month${i}`
+		link.textContent = m.slice(0, 3)
+		monthNav.appendChild(link)
+	})
+}
 
-	link.textContent = m.slice(0, 3)
-
-	monthNav.appendChild(link)
-
-})
+function setPageTitle() {
+	document.getElementById("title").textContent =
+		`Acton & Chiswick Markets Calendar ${YEAR}`
+}
 
 function recurringEvents(date) {
   
@@ -104,6 +116,7 @@ function highlightToday(date, today, dayDiv) {
       date.getMonth() === today.getMonth() &&
       date.getDate() === today.getDate()) {
       dayDiv.classList.add("today")
+	  dayDiv.id = 'today'
     }
 }
 
@@ -157,7 +170,6 @@ function buildCalendar() {
 			let key = formatDate(date)
 
 			let dayEvents = []
-
 			dayEvents = dayEvents.concat(recurringEvents(date))
 
 			events.forEach(e => {
@@ -171,15 +183,11 @@ function buildCalendar() {
 				event.className = "event " + e.class
 
 				if (e.link) {
-
 					event.innerHTML =
 						`<a href="${e.link}" target="_blank"><strong>${e.name}</strong> | ${e.location} | ${e.time}</a>`
-
 				} else {
-
 					event.innerHTML =
 						`<strong>${e.name}</strong> | ${e.location} | ${e.time}`
-
 				}
 
 				eventsDiv.appendChild(event)
@@ -199,4 +207,3 @@ function buildCalendar() {
 
 }
 
-buildCalendar()
