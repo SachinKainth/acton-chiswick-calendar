@@ -7,22 +7,56 @@ const months = [
 	"July", "August", "September", "October", "November", "December"
 ]
 
-function getCalendarElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("calendar")
-		: null
+export function formatDate(date) {
+	return date.getFullYear() + "-" +
+		String(date.getMonth() + 1).padStart(2, "0") + "-" +
+		String(date.getDate()).padStart(2, "0")
 }
 
-function getMonthNavElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("monthNav")
-		: null
+export function isSunday(date) {
+	return date.getDay() === 0
 }
 
-function getTodayNavElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("todayNav")
-		: null
+export function sundayOfMonth(date) {
+	return Math.ceil(date.getDate() / 7)
+}
+
+export function eventsForSunday(sunday, date, ymd) {
+	return regularEvents
+		.filter(event => {
+			if (event.sunday !== sunday) return false
+			if (event.skipJanuary && date.getMonth() === 0) return false
+			return true
+		})
+		.map(event => ({
+			...event,
+			link: event.link + ymd
+		}))
+}
+
+export function getEventsForDate(date) {
+
+	const key = formatDate(date)
+	let dayEvents = []
+
+	dayEvents = dayEvents.concat(recurringEvents(date))
+
+	events.forEach(e => {
+		if (e.date === key) dayEvents.push(e)
+	})
+
+	return dayEvents
+}
+
+export function highlightToday(date, today, dayDiv) {
+	if (
+		date.getFullYear() === today.getFullYear() &&
+		date.getMonth() === today.getMonth() &&
+		date.getDate() === today.getDate()
+	) {
+		dayDiv.classList.add("today")
+		dayDiv.id = "today"
+	}
 }
 
 export function setPageTitle() {
@@ -32,6 +66,24 @@ export function setPageTitle() {
 	if (title) {
 		title.textContent = `Acton & Chiswick Markets Calendar ${YEAR}`
 	}
+}
+
+export function getCalendarElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("calendar")
+		: null
+}
+
+export function getMonthNavElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("monthNav")
+		: null
+}
+
+export function getTodayNavElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("todayNav")
+		: null
 }
 
 function initCalendar() {
@@ -70,47 +122,6 @@ function recurringEvents(date) {
 	const ymd = formatDate(date)
 
 	return eventsForSunday(sunday, date, ymd)
-}
-
-export function isSunday(date) {
-	return date.getDay() === 0
-}
-
-export function sundayOfMonth(date) {
-	return Math.ceil(date.getDate() / 7)
-}
-
-export function eventsForSunday(sunday, date, ymd) {
-	return regularEvents
-		.filter(event => {
-
-			if (event.sunday !== sunday) return false
-
-			if (event.skipJanuary && date.getMonth() === 0) return false
-
-			return true
-		})
-		.map(event => ({
-			...event,
-			link: event.link + ymd
-		}))
-}
-
-export function highlightToday(date, today, dayDiv) {
-	if (
-		date.getFullYear() === today.getFullYear() &&
-		date.getMonth() === today.getMonth() &&
-		date.getDate() === today.getDate()
-	) {
-		dayDiv.classList.add("today")
-		dayDiv.id = "today"
-	}
-}
-
-export function formatDate(date) {
-	return date.getFullYear() + "-" +
-		String(date.getMonth() + 1).padStart(2, "0") + "-" +
-		String(date.getDate()).padStart(2, "0")
 }
 
 function buildCalendar() {
@@ -178,21 +189,6 @@ function createDay(date, weekday, today, weekdays) {
 	dayDiv.appendChild(dateDiv)
 
 	return dayDiv
-}
-
-export function getEventsForDate(date) {
-
-	const key = formatDate(date)
-
-	let dayEvents = []
-
-	dayEvents = dayEvents.concat(recurringEvents(date))
-
-	events.forEach(e => {
-		if (e.date === key) dayEvents.push(e)
-	})
-
-	return dayEvents
 }
 
 function renderEvents(date) {
