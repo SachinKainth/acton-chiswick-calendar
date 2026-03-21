@@ -1,11 +1,13 @@
 {
   "name": "acton-and-chiswick-calendar",
   "version": "1.0.0",
+  "type": "module",
   "description": "<h1>Markets in Acton and Chiswick in 2026</h1>",
   "main": "calendar.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,12 @@
   },
   "homepage": "https://github.com/SachinKainth/acton-chiswick-calendar#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.29.2",
+    "@eslint/js": "^10.0.1",
+    "babel-jest": "^30.3.0",
     "eslint": "^10.1.0",
-    "jest": "^30.3.0"
+    "globals": "^17.4.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
   }
 }

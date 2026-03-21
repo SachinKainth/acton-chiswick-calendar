@@ -1,34 +1,60 @@
-import { events, regularEvents } from "./events.js";
+import { events, regularEvents } from "./events.js"
 
-const YEAR = 2026
-
-const calendar = document.getElementById("calendar")
-const monthNav = document.getElementById("monthNav")
-const todayNav = document.getElementById("todayNav")
+export const YEAR = 2026
 
 const months = [
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November", "December"
-
 ]
 
-initCalendar()
+function getCalendarElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("calendar")
+		: null
+}
+
+function getMonthNavElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("monthNav")
+		: null
+}
+
+function getTodayNavElement() {
+	return typeof document !== "undefined"
+		? document.getElementById("todayNav")
+		: null
+}
+
+export function setPageTitle() {
+	if (typeof document === "undefined") return
+
+	const title = document.getElementById("title")
+	if (title) {
+		title.textContent = `Acton & Chiswick Markets Calendar ${YEAR}`
+	}
+}
 
 function initCalendar() {
-  setPageTitle()
-  setMonthLinks()
-  setTodayLink()
-  buildCalendar()
+	setPageTitle()
+	setMonthLinks()
+	setTodayLink()
+	buildCalendar()
 }
 
 function setTodayLink() {
+	const todayNav = getTodayNavElement()
+	if (!todayNav) return
+
 	let link = document.createElement("a")
 	link.href = `#today`
-	link.textContent = 'Today'
+	link.textContent = "Today"
 	todayNav.appendChild(link)
 }
 
 function setMonthLinks() {
+	const monthNav = getMonthNavElement()
+	if (!monthNav) return
+
 	months.forEach((m, i) => {
 		let link = document.createElement("a")
 		link.href = `#month${i}`
@@ -37,13 +63,7 @@ function setMonthLinks() {
 	})
 }
 
-function setPageTitle() {
-	document.getElementById("title").textContent =
-		`Acton & Chiswick Markets Calendar ${YEAR}`
-}
-
 function recurringEvents(date) {
-
 	if (!isSunday(date)) return []
 
 	const sunday = sundayOfMonth(date)
@@ -60,12 +80,7 @@ function sundayOfMonth(date) {
 	return Math.ceil(date.getDate() / 7)
 }
 
-function isJanuary(date) {
-	return date.getMonth() === 0
-}
-
 function eventsForSunday(sunday, date, ymd) {
-
 	return regularEvents
 		.filter(event => {
 
@@ -82,21 +97,26 @@ function eventsForSunday(sunday, date, ymd) {
 }
 
 function highlightToday(date, today, dayDiv) {
-	if (date.getFullYear() === today.getFullYear() &&
-      date.getMonth() === today.getMonth() &&
-      date.getDate() === today.getDate()) {
-      dayDiv.classList.add("today")
-	  dayDiv.id = 'today'
-    }
+	if (
+		date.getFullYear() === today.getFullYear() &&
+		date.getMonth() === today.getMonth() &&
+		date.getDate() === today.getDate()
+	) {
+		dayDiv.classList.add("today")
+		dayDiv.id = "today"
+	}
 }
 
-function formatDate(date) {
+export function formatDate(date) {
 	return date.getFullYear() + "-" +
-    	String(date.getMonth() + 1).padStart(2, "0") + "-" +
-    	String(date.getDate()).padStart(2, "0")
+		String(date.getMonth() + 1).padStart(2, "0") + "-" +
+		String(date.getDate()).padStart(2, "0")
 }
 
 function buildCalendar() {
+
+	const calendar = getCalendarElement()
+	if (!calendar) return
 
 	calendar.innerHTML = ""
 
@@ -127,7 +147,6 @@ function buildCalendar() {
 	}
 }
 
-
 function createMonth(m) {
 
 	const monthDiv = document.createElement("div")
@@ -141,7 +160,6 @@ function createMonth(m) {
 
 	return monthDiv
 }
-
 
 function createDay(date, weekday, today, weekdays) {
 
@@ -162,7 +180,6 @@ function createDay(date, weekday, today, weekdays) {
 	return dayDiv
 }
 
-
 function getEventsForDate(date) {
 
 	const key = formatDate(date)
@@ -177,7 +194,6 @@ function getEventsForDate(date) {
 
 	return dayEvents
 }
-
 
 function renderEvents(date) {
 
@@ -206,4 +222,6 @@ function renderEvents(date) {
 	return eventsDiv
 }
 
-module.exports = { setPageTitle };
+if (typeof document !== "undefined") {
+	initCalendar()
+}
