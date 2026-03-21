@@ -1,3 +1,5 @@
+import { events, regularEvents } from "./events.js";
+
 const YEAR = 2026
 
 const calendar = document.getElementById("calendar")

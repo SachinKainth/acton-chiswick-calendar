@@ -1,4 +1,4 @@
-const events = [
+export const events = [
 
 	{
 		date: "2026-04-18",
@@ -52,7 +52,7 @@ const events = [
 
 ]
 
-const regularEvents = [
+export const regularEvents = [
 
 	{
 		sunday: 1,
