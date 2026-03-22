@@ -27,6 +27,7 @@
     "eslint": "^10.1.0",
     "globals": "^17.4.0",
     "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0"
+    "jest-environment-jsdom": "^30.3.0",
+    "node-fetch": "^3.3.2"
   }
 }

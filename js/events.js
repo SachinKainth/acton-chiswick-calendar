@@ -1,4 +1,4 @@
-import { recurringEvents } from "./recurringEvents.js"
+import * as recurringEvents from "./recurringEvents.js"
 import * as dateUtils from "./dateUtils.js"
 
 export const individualEvents = [
@@ -138,7 +138,7 @@ export function getEventsForDate(date) {
 	const key = dateUtils.formatDate(date)
 	let dayEvents = []
 
-	dayEvents = dayEvents.concat(recurringEvents(date))
+	dayEvents = dayEvents.concat(recurringEvents.recurringEvents(date))
 
 	individualEvents.forEach(e => {
 		if (e.date === key) dayEvents.push(e)

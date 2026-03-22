@@ -1,5 +1,5 @@
 import * as dateUtils from "../js/dateUtils.js"
-import { recurringEvents } from "../js/recurringEvents.js"
+import * as recurringEvents from "../js/recurringEvents.js"
 
 describe("recurringEvents", () => {
 
@@ -13,7 +13,7 @@ describe("recurringEvents", () => {
 
     jest.spyOn(dateUtils, "isSunday").mockReturnValue(false)
 
-    const result = recurringEvents(date)
+    const result = recurringEvents.recurringEvents(date)
 
     expect(result).toEqual([])
     expect(dateUtils.isSunday).toHaveBeenCalledWith(date)
@@ -25,7 +25,7 @@ describe("recurringEvents", () => {
     jest.spyOn(dateUtils, "sundayOfMonth").mockReturnValue(4)
     jest.spyOn(dateUtils, "formatDate").mockReturnValue("2026-03-22")
 
-    var actual = recurringEvents(date)
+    var actual = recurringEvents.recurringEvents(date)
 
     expect(actual).toEqual([
       {
