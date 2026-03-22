@@ -3,15 +3,7 @@ import * as dom from "./dom.js"
 import * as navigation from "./navigation.js"
 import * as constants from "./constants.js"
 
-function initCalendar() {
-	dom.setPageTitle()
-	navigation.setMonthLinks()
-	navigation.setTodayLink()
-	buildCalendar()
-}
-
-function buildCalendar() {
-
+export function buildCalendar() {
 	const calendar = dom.getCalendarElement()
 	if (!calendar) return
 
@@ -42,6 +34,13 @@ function buildCalendar() {
 
 		calendar.appendChild(monthDiv)
 	}
+}
+
+function initCalendar() {
+	dom.setPageTitle()
+	navigation.setMonthLinks()
+	navigation.setTodayLink()
+	buildCalendar()
 }
 
 function createMonth(m) {
@@ -104,6 +103,4 @@ function renderEvents(date) {
 	return eventsDiv
 }
 
-if (typeof document !== "undefined") {
-	initCalendar()
-}
+initCalendar()
