@@ -1,9 +1,6 @@
 import {
   YEAR,
   setPageTitle,
-  formatDate,
-  isSunday,
-  sundayOfMonth,
   eventsForSunday,
   getEventsForDate,
   highlightToday,
@@ -11,57 +8,11 @@ import {
   getMonthNavElement,
   getTodayNavElement,
   setMonthLinks,
-  setTodayLink
+  setTodayLink,
+  recurringEvents
 } from "../js/calendar.js"
-
+import * as dateUtils from "../js/dateUtils.js"
 import { events, regularEvents } from "../js/events.js"
-
-describe("formatDate", () => {
-
-  test("formats date as YYYY-MM-DD", () => {
-    const date = new Date(2026, 10, 15)
-    expect(formatDate(date)).toBe("2026-11-15")
-  })
-
-  test("pads single digit month and day", () => {
-    const date = new Date(2026, 8, 3)
-    expect(formatDate(date)).toBe("2026-09-03")
-  })
-
-})
-
-describe("isSunday", () => {
-
-  test("returns true for Sunday", () => {
-    const date = new Date(2026, 0, 4)
-    expect(isSunday(date)).toBe(true)
-  })
-
-  test("returns false for non Sunday", () => {
-    const date = new Date(2026, 0, 5)
-    expect(isSunday(date)).toBe(false)
-  })
-
-})
-
-describe("sundayOfMonth", () => {
-
-  test("first Sunday of month", () => {
-    const date = new Date(2026, 0, 4)
-    expect(sundayOfMonth(date)).toBe(1)
-  })
-
-  test("third Sunday of month", () => {
-    const date = new Date(2026, 0, 18)
-    expect(sundayOfMonth(date)).toBe(3)
-  })
-
-  test("not a Sunday", () => {
-    const date = new Date(2026, 0, 7)
-    expect(sundayOfMonth(date)).toBe(1)
-  })
-
-})
 
 describe("eventsForSunday", () => {
 
@@ -149,6 +100,48 @@ describe("highlightToday", () => {
 
     expect(div.classList.contains("today")).toBe(false)
     expect(div.id).not.toBe("today")
+
+  })
+
+})
+
+describe("recurringEvents", () => {
+
+  const date = new Date("2026-03-22")
+
+  beforeEach(() => {
+    jest.restoreAllMocks()
+  })
+
+  test("returns empty array if the date is not Sunday", () => {
+
+    jest.spyOn(dateUtils, "isSunday").mockReturnValue(false)
+
+    const result = recurringEvents(date)
+
+    expect(result).toEqual([])
+    expect(dateUtils.isSunday).toHaveBeenCalledWith(date)
+  })
+
+  test("calls eventsForSunday with correct arguments", () => {
+
+    jest.spyOn(dateUtils, "isSunday").mockReturnValue(true)
+    jest.spyOn(dateUtils, "sundayOfMonth").mockReturnValue(4)
+    jest.spyOn(dateUtils, "formatDate").mockReturnValue("2026-03-22")
+
+    var actual = recurringEvents(date)
+
+    expect(actual).toEqual([
+      {
+         "area": "chiswick",
+         "class": "streetfood",
+         "link": "https://chiswickcalendar.co.uk/event/foodst-old-market-place/2026-03-22",
+         "location": "Old Market Place",
+         "name": "FoodSt",
+         "sunday": 4,
+         "time": "11:00–16:00",
+      }
+    ])
 
   })
 

@@ -1,4 +1,5 @@
 import { events, regularEvents } from "./events.js"
+import * as dateUtils from "../js/dateUtils.js"
 
 export const YEAR = 2026
 
@@ -6,20 +7,6 @@ const months = [
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November", "December"
 ]
-
-export function formatDate(date) {
-	return date.getFullYear() + "-" +
-		String(date.getMonth() + 1).padStart(2, "0") + "-" +
-		String(date.getDate()).padStart(2, "0")
-}
-
-export function isSunday(date) {
-	return date.getDay() === 0
-}
-
-export function sundayOfMonth(date) {
-	return Math.ceil(date.getDate() / 7)
-}
 
 export function eventsForSunday(sunday, date, ymd) {
 	return regularEvents
@@ -36,7 +23,7 @@ export function eventsForSunday(sunday, date, ymd) {
 
 export function getEventsForDate(date) {
 
-	const key = formatDate(date)
+	const key = dateUtils.formatDate(date)
 	let dayEvents = []
 
 	dayEvents = dayEvents.concat(recurringEvents(date))
@@ -108,20 +95,20 @@ export function setTodayLink() {
 	todayNav.appendChild(link)
 }
 
+export function recurringEvents(date) {
+	if (!dateUtils.isSunday(date)) return []
+
+	const sunday = dateUtils.sundayOfMonth(date)
+	const ymd = dateUtils.formatDate(date)
+
+	return eventsForSunday(sunday, date, ymd)
+}
+
 function initCalendar() {
 	setPageTitle()
 	setMonthLinks()
 	setTodayLink()
 	buildCalendar()
-}
-
-function recurringEvents(date) {
-	if (!isSunday(date)) return []
-
-	const sunday = sundayOfMonth(date)
-	const ymd = formatDate(date)
-
-	return eventsForSunday(sunday, date, ymd)
 }
 
 function buildCalendar() {
