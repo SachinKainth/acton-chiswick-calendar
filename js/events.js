@@ -1,4 +1,7 @@
-export const events = [
+import { recurringEvents } from "./recurringEvents.js"
+import * as dateUtils from "./dateUtils.js"
+
+export const individualEvents = [
 
 	{
 		date: "2026-04-18",
@@ -116,3 +119,30 @@ export const regularEvents = [
 	}
 
 ]
+
+export function eventsForSunday(sunday, date, ymd) {
+	return regularEvents
+		.filter(event => {
+			if (event.sunday !== sunday) return false
+			if (event.skipJanuary && date.getMonth() === 0) return false
+			return true
+		})
+		.map(event => ({
+			...event,
+			link: event.link + ymd
+		}))
+}
+
+export function getEventsForDate(date) {
+
+	const key = dateUtils.formatDate(date)
+	let dayEvents = []
+
+	dayEvents = dayEvents.concat(recurringEvents(date))
+
+	individualEvents.forEach(e => {
+		if (e.date === key) dayEvents.push(e)
+	})
+
+	return dayEvents
+}

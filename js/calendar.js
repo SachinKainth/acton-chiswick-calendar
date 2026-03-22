@@ -1,5 +1,4 @@
-import { events, regularEvents } from "./events.js"
-import * as dateUtils from "../js/dateUtils.js"
+import * as events from "./events.js"
 
 export const YEAR = 2026
 
@@ -7,33 +6,6 @@ const months = [
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November", "December"
 ]
-
-export function eventsForSunday(sunday, date, ymd) {
-	return regularEvents
-		.filter(event => {
-			if (event.sunday !== sunday) return false
-			if (event.skipJanuary && date.getMonth() === 0) return false
-			return true
-		})
-		.map(event => ({
-			...event,
-			link: event.link + ymd
-		}))
-}
-
-export function getEventsForDate(date) {
-
-	const key = dateUtils.formatDate(date)
-	let dayEvents = []
-
-	dayEvents = dayEvents.concat(recurringEvents(date))
-
-	events.forEach(e => {
-		if (e.date === key) dayEvents.push(e)
-	})
-
-	return dayEvents
-}
 
 export function highlightToday(date, today, dayDiv) {
 	if (
@@ -93,15 +65,6 @@ export function setTodayLink() {
 	link.href = `#today`
 	link.textContent = "Today"
 	todayNav.appendChild(link)
-}
-
-export function recurringEvents(date) {
-	if (!dateUtils.isSunday(date)) return []
-
-	const sunday = dateUtils.sundayOfMonth(date)
-	const ymd = dateUtils.formatDate(date)
-
-	return eventsForSunday(sunday, date, ymd)
 }
 
 function initCalendar() {
@@ -183,7 +146,7 @@ function renderEvents(date) {
 	const eventsDiv = document.createElement("div")
 	eventsDiv.className = "events"
 
-	const dayEvents = getEventsForDate(date)
+	const dayEvents = events.getEventsForDate(date)
 
 	dayEvents.forEach(e => {
 
