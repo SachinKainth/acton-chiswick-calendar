@@ -1,82 +1,18 @@
 import * as events from "./events.js"
-
-export const YEAR = 2026
-
-const months = [
-	"January", "February", "March", "April", "May", "June",
-	"July", "August", "September", "October", "November", "December"
-]
-
-export function highlightToday(date, today, dayDiv) {
-	if (
-		date.getFullYear() === today.getFullYear() &&
-		date.getMonth() === today.getMonth() &&
-		date.getDate() === today.getDate()
-	) {
-		dayDiv.classList.add("today")
-		dayDiv.id = "today"
-	}
-}
-
-export function setPageTitle() {
-	if (typeof document === "undefined") return
-
-	const title = document.getElementById("title")
-	if (title) {
-		title.textContent = `Acton & Chiswick Markets Calendar ${YEAR}`
-	}
-}
-
-export function getCalendarElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("calendar")
-		: null
-}
-
-export function getMonthNavElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("monthNav")
-		: null
-}
-
-export function getTodayNavElement() {
-	return typeof document !== "undefined"
-		? document.getElementById("todayNav")
-		: null
-}
-
-export function setMonthLinks() {
-	const monthNav = getMonthNavElement()
-	if (!monthNav) return
-
-	months.forEach((m, i) => {
-		let link = document.createElement("a")
-		link.href = `#month${i}`
-		link.textContent = m.slice(0, 3)
-		monthNav.appendChild(link)
-	})
-}
-
-export function setTodayLink() {
-	const todayNav = getTodayNavElement()
-	if (!todayNav) return
-
-	let link = document.createElement("a")
-	link.href = `#today`
-	link.textContent = "Today"
-	todayNav.appendChild(link)
-}
+import * as dom from "./dom.js"
+import * as navigation from "./navigation.js"
+import * as constants from "./constants.js"
 
 function initCalendar() {
-	setPageTitle()
-	setMonthLinks()
-	setTodayLink()
+	dom.setPageTitle()
+	navigation.setMonthLinks()
+	navigation.setTodayLink()
 	buildCalendar()
 }
 
 function buildCalendar() {
 
-	const calendar = getCalendarElement()
+	const calendar = dom.getCalendarElement()
 	if (!calendar) return
 
 	calendar.innerHTML = ""
@@ -88,11 +24,11 @@ function buildCalendar() {
 
 		const monthDiv = createMonth(m)
 
-		const days = new Date(YEAR, m + 1, 0).getDate()
+		const days = new Date(constants.YEAR, m + 1, 0).getDate()
 
 		for (let d = 1; d <= days; d++) {
 
-			const date = new Date(YEAR, m, d)
+			const date = new Date(constants.YEAR, m, d)
 			const weekday = date.getDay()
 
 			const dayDiv = createDay(date, weekday, today, weekdays)
@@ -115,7 +51,7 @@ function createMonth(m) {
 	monthDiv.id = `month${m}`
 
 	const header = document.createElement("h2")
-	header.textContent = months[m]
+	header.textContent = constants.months[m]
 
 	monthDiv.appendChild(header)
 
@@ -130,7 +66,7 @@ function createDay(date, weekday, today, weekdays) {
 	else if (weekday === 0) dayDiv.className = "day sunday"
 	else dayDiv.className = "day"
 
-	highlightToday(date, today, dayDiv)
+	dom.highlightToday(date, today, dayDiv)
 
 	const dateDiv = document.createElement("div")
 	dateDiv.className = "date"
