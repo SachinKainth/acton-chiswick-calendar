@@ -1,4 +1,3 @@
-import * as recurringEvents from "./recurringEvents.js"
 import * as dateUtils from "./dateUtils.js"
 
 export const individualEvents = [
@@ -120,6 +119,17 @@ export const regularEvents = [
 
 ]
 
+export const everySundayEvents = [
+	{
+		name: "The Food Market",
+		location: "Pavilion, Market Drive",
+		time: "10:00–14:00",
+		area: "chiswick",
+		class: "food",
+		link: "https://thefoodmarketchiswick.com/"
+	},
+]
+
 export function eventsForSunday(sunday, date, ymd) {
 	return regularEvents
 		.filter(event => {
@@ -138,11 +148,20 @@ export function getEventsForDate(date) {
 	const key = dateUtils.formatDate(date)
 	let dayEvents = []
 
-	dayEvents = dayEvents.concat(recurringEvents.recurringEvents(date))
+	dayEvents = dayEvents.concat(recurringEvents(date))
 
 	individualEvents.forEach(e => {
 		if (e.date === key) dayEvents.push(e)
 	})
 
 	return dayEvents
+}
+
+export function recurringEvents(date) {
+    if (!dateUtils.isSunday(date)) return []
+
+    const sunday = dateUtils.sundayOfMonth(date)
+    const ymd = dateUtils.formatDate(date)
+
+    return eventsForSunday(sunday, date, ymd)
 }

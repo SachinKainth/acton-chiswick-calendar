@@ -35,4 +35,22 @@ describe("Calendar Integration Test", () => {
 
   }, 60000)
 
+  test("returns the correct number of events for the year", async () => {
+
+    const dom = new JSDOM(`<div id="calendar"></div><div id="title"></div>`)
+
+    global.window = dom.window
+    global.document = dom.window.document
+
+    // Import AFTER DOM exists
+    const calendar = await import("../js/calendar.js")
+
+    calendar.buildCalendar()
+
+    const events = Array.from(document.querySelectorAll(".event"))
+
+    expect(events.length).toEqual(76)
+
+  })
+
 })
