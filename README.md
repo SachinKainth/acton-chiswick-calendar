@@ -8,9 +8,7 @@ A simple static web application that displays the **Acton & Chiswick Markets cal
 
 The application is deployed and publicly accessible at:
 
-**https://acton-chiswick-calendar.pages.dev**
-
-*(Update this URL if the deployment location changes.)*
+**https://sachinkainth.github.io/acton-chiswick-calendar/**
 
 ---
 
