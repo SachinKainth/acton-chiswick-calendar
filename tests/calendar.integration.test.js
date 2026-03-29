@@ -49,7 +49,7 @@ describe("Calendar Integration Test", () => {
 
     const events = Array.from(document.querySelectorAll(".event"))
 
-    expect(events.length).toEqual(76)
+    expect(events.length).toEqual(127)
 
   })
 

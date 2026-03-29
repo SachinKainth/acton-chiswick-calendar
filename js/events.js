@@ -122,16 +122,17 @@ export const regularEvents = [
 export const everySundayEvents = [
 	{
 		name: "The Food Market",
+		skip: ['2026-04-05'],
 		location: "Pavilion, Market Drive",
 		time: "10:00–14:00",
 		area: "chiswick",
-		class: "food",
+		class: "foodmarket",
 		link: "https://thefoodmarketchiswick.com/"
-	},
+	}
 ]
 
 export function eventsForSunday(sunday, date, ymd) {
-	return regularEvents
+	let re = regularEvents
 		.filter(event => {
 			if (event.sunday !== sunday) return false
 			if (event.skipJanuary && date.getMonth() === 0) return false
@@ -141,6 +142,13 @@ export function eventsForSunday(sunday, date, ymd) {
 			...event,
 			link: event.link + ymd
 		}))
+
+	const dateStr = dateUtils.formatDate(date)
+
+	const ese = everySundayEvents.filter(e =>
+		!e.skip?.includes(dateStr))
+
+	return re.concat(ese) 
 }
 
 export function getEventsForDate(date) {

@@ -2,7 +2,7 @@
   "name": "acton-and-chiswick-calendar",
   "version": "1.0.0",
   "type": "module",
-  "description": "<h1>Markets in Acton and Chiswick in 2026</h1>",
+  "description": "<h1>Markets in Acton and Chiswick</h1>",
   "main": "calendar.js",
   "scripts": {
     "start": "node index.js",

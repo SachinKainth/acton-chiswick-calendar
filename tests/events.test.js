@@ -16,10 +16,11 @@ describe("eventsForSunday", () => {
       .map(e => ({
         ...e,
         link: e.link + ymd
-      })) 
+      }))
+      .concat(events.everySundayEvents)
 
     expect(result).toEqual(expected)
-    expect(result.length).toEqual(3)
+    expect(result.length).toEqual(4)
 
   })
 
@@ -37,9 +38,30 @@ describe("eventsForSunday", () => {
         ...e,
         link: e.link + ymd
       }))
+      .concat(events.everySundayEvents)
 
     expect(result).toEqual(expected)
-    expect(result.length).toEqual(2)
+    expect(result.length).toEqual(3)
+
+  })
+
+  test("skips food market for Easter Sunday", () => {
+
+    const sunday = 1
+    const date = new Date(2026, 3, 5)
+    const ymd = "2026-04-05"
+
+    const result = events.eventsForSunday(sunday, date, ymd)
+
+    const expected = events.regularEvents
+      .filter(e => e.sunday === 1)
+      .map(e => ({
+        ...e,
+        link: e.link + ymd
+      }))
+
+    expect(result).toEqual(expected)
+    expect(result.length).toEqual(3)
 
   })
 
@@ -78,7 +100,7 @@ describe("recurringEvents", () => {
     expect(dateUtils.isSunday).toHaveBeenCalledWith(date)
   })
 
-  test("returns an event", () => {
+  test("returns events", () => {
 
     jest.spyOn(dateUtils, "isSunday").mockReturnValue(true)
     jest.spyOn(dateUtils, "sundayOfMonth").mockReturnValue(4)
@@ -95,7 +117,16 @@ describe("recurringEvents", () => {
          "name": "FoodSt",
          "sunday": 4,
          "time": "11:00–16:00",
-      }
+      },
+      {
+        name: "The Food Market",
+        skip: ["2026-04-05"],
+        location: "Pavilion, Market Drive",
+        time: "10:00–14:00",
+        area: "chiswick",
+        class: "foodmarket",
+        link: "https://thefoodmarketchiswick.com/"
+	    }
     ])
 
   })
