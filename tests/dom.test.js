@@ -22,17 +22,24 @@ describe("highlightToday", () => {
 })
 
 describe("setPageTitle", () => {
-  test("does nothing if #title element does not exist", () => {
-    document.body.innerHTML = `<div id="not-title"></div>`  // no #title
+  test("does nothing if element with class title does not exist", () => {
+    document.body.innerHTML = `<div class="not-title"></div>`  // no class title
     expect(() => dom.setPageTitle()).not.toThrow()
-    expect(document.getElementById("title")).toBeNull()
+    expect(document.getElementsByClassName("title").length).toBe(0)
   })
 
-  test("sets #title textContent if element exists", () => {
-    document.body.innerHTML = `<h1 id="title"></h1>`
+  test("sets textContent if element exists", () => {
+    document.body.innerHTML = 
+    `<head>
+			<title class="title"></title>
+		</head>
+		<body>
+				<h1 class="title"></h1>
+    <body`
     dom.setPageTitle()
-    const title = document.getElementById("title")
-    expect(title.textContent).toBe(`Acton & Chiswick Markets Calendar ${constants.YEAR}`)
+    const elements = document.getElementsByClassName("title")
+    expect(elements[0].textContent).toBe(`Acton & Chiswick Markets Calendar ${constants.YEAR}`)
+    expect(elements[1].textContent).toBe(`Acton & Chiswick Markets Calendar ${constants.YEAR}`)
   })
 })
 

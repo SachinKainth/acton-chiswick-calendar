@@ -12,9 +12,9 @@ export function highlightToday(date, today, dayDiv) {
 }
 
 export function setPageTitle() {
-    const title = document.getElementById("title")
-    if (title) {
-        title.textContent = `Acton & Chiswick Markets Calendar ${constants.YEAR}`
+    var elements = document.getElementsByClassName("title");
+    for(var i = 0; i < elements.length; i++) {
+        elements[i].textContent = `Acton & Chiswick Markets Calendar ${constants.YEAR}`
     }
 }
 
