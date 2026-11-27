@@ -82,6 +82,27 @@ describe("getRecurringEvents", () => {
     expect(result.some(event => event.name === "The Food Market")).toBe(false);
   });
 
+  test("skips The Food Market on the Sunday after Christmas in both years", () => {
+    const closures = [
+      [new Date(2026, 11, 27), calendar2026],
+      [new Date(2027, 11, 26), calendar2027]
+    ];
+
+    closures.forEach(([date, calendar]) => {
+      const result = eventEngine.getRecurringEvents(date, calendar);
+      expect(result.some(event => event.name === "The Food Market")).toBe(false);
+    });
+
+    const previousSundays = [
+      [new Date(2026, 11, 20), calendar2026],
+      [new Date(2027, 11, 19), calendar2027]
+    ];
+    previousSundays.forEach(([date, calendar]) => {
+      const result = eventEngine.getRecurringEvents(date, calendar);
+      expect(result.some(event => event.name === "The Food Market")).toBe(true);
+    });
+  });
+
   test("supports month-specific URL, time and date-suffix overrides", () => {
     const annualVariant = {
       year: 2026,
