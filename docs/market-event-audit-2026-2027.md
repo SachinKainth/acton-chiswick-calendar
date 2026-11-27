@@ -23,7 +23,7 @@ Audit snapshot: 27 November 2026. This document records the source checks used f
 - Flower Market official visitor FAQ: https://chiswickflowermarket.com/frequently-asked-questions-visitors/
 - Flower Market dated October listing: https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-10-04/
 - Flower Market official homepage: https://chiswickflowermarket.com/
-- Duck Pond official market page: https://www.duckpondmarket.co.uk/
+- Duck Pond official market page: https://duckpondmarket.com/chiswick
 - Chiswick House Christmas programme: https://www.chiswickhouseandgardens.org.uk/whats-on/christmas/
 - Chiswick Car Boot Sale official site: https://chiswickcarbootsale.com/home
 - Chiswick Cheese Market visitor information: https://www.chiswickcheesemarket.uk/visit-us/
