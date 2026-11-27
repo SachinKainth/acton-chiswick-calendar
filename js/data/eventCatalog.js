@@ -9,7 +9,23 @@ export const eventCatalog = {
   flowers: {
     name: "Flowers",
     location: "Old Market Place",
-    time: "09:00–15:30",
+    // The organiser's calendar and dated Chiswick Calendar listings agree on
+    // 09:30–15:30 in winter; the FAQ/home page have conflicting 09:00 starts.
+    time: "09:30–15:30",
+    overridesByMonth: {
+      1: { time: "09:30–15:30" },
+      2: { time: "09:30–15:30" },
+      3: { time: "09:30–15:30" },
+      4: { time: "09:30–15:30" },
+      5: { time: "09:00–16:00" },
+      6: { time: "09:00–16:00" },
+      7: { time: "09:00–16:00" },
+      8: { time: "09:00–16:00" },
+      9: { time: "09:00–16:00" },
+      10: { time: "09:30–15:30" },
+      11: { time: "09:30–15:30" },
+      12: { time: "09:30–15:30" }
+    },
     area: "chiswick",
     class: "flowers",
     link: "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/",

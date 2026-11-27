@@ -10,9 +10,6 @@ function resolveEvent(scheduledEvent, date) {
   const month = date.getMonth() + 1;
   const dateKey = dateUtils.formatDate(date);
 
-  // Catalogue defaults apply first. Catalogue month defaults allow recurring
-  // seasonal changes shared by years. Annual defaults then override those,
-  // followed by annual month-specific values with the highest precedence.
   const {
     appendDateToLink: catalogAppendsDate,
     overridesByMonth: catalogOverridesByMonth = {},
@@ -23,6 +20,7 @@ function resolveEvent(scheduledEvent, date) {
     appendDateToLink: annualAppendsDate,
     ...annualOverrides
   } = scheduledEvent.overrides || {};
+  const annualOverridesByDate = scheduledEvent.overridesByDate || {};
 
   const {
     appendDateToLink: catalogMonthAppendsDate,
@@ -34,14 +32,21 @@ function resolveEvent(scheduledEvent, date) {
     ...annualMonthOverrides
   } = scheduledEvent.overridesByMonth?.[month] || {};
 
+  const {
+    appendDateToLink: annualDateAppendsDate,
+    ...annualDateOverrides
+  } = annualOverridesByDate[dateKey] || {};
+
   const event = {
     ...catalogDefaults,
     ...catalogMonthOverrides,
     ...annualOverrides,
-    ...annualMonthOverrides
+    ...annualMonthOverrides,
+    ...annualDateOverrides
   };
 
   const shouldAppendDate =
+    annualDateAppendsDate ??
     annualMonthAppendsDate ??
     annualAppendsDate ??
     catalogMonthAppendsDate ??

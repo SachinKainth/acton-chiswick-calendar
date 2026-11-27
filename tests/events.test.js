@@ -20,7 +20,20 @@ describe("getRecurringEvents", () => {
     expect(result[0].link).toBe(
       "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-02-01"
     );
+    expect(result[0].time).toBe("09:30–15:30");
     expect(result[0]).not.toHaveProperty("appendDateToLink");
+  });
+
+  test("uses seasonal Flower Market hours", () => {
+    const winter = eventEngine.getRecurringEvents(new Date(2026, 0, 4), {
+      ...calendar2026,
+      monthlyEvents: calendar2026.monthlyEvents.map(event =>
+        event.eventId === "flowers" ? { ...event, skipMonths: [] } : event
+      )
+    });
+    const summer = eventEngine.getRecurringEvents(new Date(2026, 5, 7), calendar2026);
+    expect(winter.find(event => event.name === "Flowers").time).toBe("09:30–15:30");
+    expect(summer.find(event => event.name === "Flowers").time).toBe("09:00–16:00");
   });
 
   test("uses the official Car Boot organiser website without appending a date", () => {
@@ -30,10 +43,10 @@ describe("getRecurringEvents", () => {
     expect(carBoot.link).toBe("https://chiswickcarbootsale.com/");
   });
 
-  test("skips the Car Boot Sale in January", () => {
+  test("skips the Flower Market and Car Boot Sale in January", () => {
     const result = eventEngine.getRecurringEvents(new Date(2026, 0, 4), calendar2026);
     expect(result.map(event => event.name)).toEqual([
-      "Flowers", "Duck Pond", "The Food Market"
+      "Duck Pond", "The Food Market"
     ]);
   });
 
@@ -44,9 +57,9 @@ describe("getRecurringEvents", () => {
     ]);
   });
 
-  test("skips the Food Market on the provisional 2027 Easter exception", () => {
+  test("does not assume an unverified 2027 Easter closure", () => {
     const result = eventEngine.getRecurringEvents(new Date(2027, 2, 28), calendar2027);
-    expect(result.some(event => event.name === "The Food Market")).toBe(false);
+    expect(result.some(event => event.name === "The Food Market")).toBe(true);
   });
 
   test("supports month-specific URL, time and date-suffix overrides", () => {
@@ -95,7 +108,7 @@ describe("getRecurringEvents", () => {
       "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-06-07"
     );
 
-    expect(july.time).toBe("09:00–15:30");
+    expect(july.time).toBe("09:00–16:00");
     expect(july.location).toBe("Annual default location");
     expect(july.link).toBe(
       "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-07-05"
@@ -152,7 +165,7 @@ describe("getRecurringEvents", () => {
       new Date(2026, 1, 1),
       calendar2026
     );
-    expect(sharedResult[0].time).toBe("09:00–15:30");
+    expect(sharedResult[0].time).toBe("09:30–15:30");
   });
 });
 
@@ -167,11 +180,12 @@ describe("getEventsForDate", () => {
     ]);
   });
 
-  test("includes all four published 2026 Open Art Spaces market dates", () => {
+  test("includes organiser-announced 2026 Open Art Spaces Chiswick dates", () => {
     const artDates = [
       "2026-03-29",
       "2026-05-31",
-      "2026-08-30",
+      "2026-08-02",
+      "2026-11-01",
       "2026-11-29"
     ];
 
@@ -186,6 +200,30 @@ describe("getEventsForDate", () => {
       expect(artEvent).toBeDefined();
       expect(artEvent.link).toBe("https://www.openartspaces.co.uk/market");
     });
+  });
+
+  test("uses the homepage's 09:00 opening for the 6 December Flower Market only", () => {
+    const december = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
+    expect(december.find(event => event.name === "Flowers").time).toBe("09:00–15:30");
+    const november = eventEngine.getEventsForDate(new Date(2026, 10, 1), calendar2026);
+    expect(november.find(event => event.name === "Flowers").time).toBe("09:30–15:30");
+  });
+
+  test("adds Duck Pond festive dates using the organiser's 10:00–15:00 listings", () => {
+    const festiveDates = [
+      "2026-12-05", "2026-12-06", "2026-12-19", "2026-12-20",
+      "2026-12-21", "2026-12-22", "2026-12-23", "2026-12-24"
+    ];
+    festiveDates.forEach(date => {
+      const [year, month, day] = date.split("-").map(Number);
+      const events = eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2026);
+      const duckPond = events.find(event => event.name === "Duck Pond");
+      expect(duckPond).toBeDefined();
+      expect(duckPond.time).toBe("10:00–15:00");
+      expect(duckPond.link).toBe("https://duckpondmarket.com/chiswick");
+    });
+    const decemberSixth = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
+    expect(decemberSixth.filter(event => event.name === "Duck Pond")).toHaveLength(1);
   });
 
   test("includes the W4 Art & Design Winter Fair on its two confirmed dates", () => {
@@ -209,7 +247,7 @@ describe("getEventsForDate", () => {
     });
   });
 
-  test("includes individual events on their exact dates", () => {
+  test("includes individual events on their exact dates", async () => {
     const result = eventEngine.getEventsForDate(new Date(2026, 3, 18), calendar2026);
     expect(result.some(event => event.name === "Makers Market")).toBe(true);
   });
@@ -218,7 +256,7 @@ describe("getEventsForDate", () => {
     expect(eventEngine.getEventsForDate(new Date(2027, 3, 18), calendar2026)).toEqual([]);
   });
 
-  test("returns the expected total number of events for the preserved 2026 calendar", () => {
+  test("returns the expected total number of events for the corrected 2026 calendar", () => {
     let count = 0;
     for (let month = 0; month < 12; month++) {
       const days = new Date(2026, month + 1, 0).getDate();
@@ -229,7 +267,7 @@ describe("getEventsForDate", () => {
         ).length;
       }
     }
-    expect(count).toBe(132);
+    expect(count).toBe(139);
   });
 
   test("2027 has no invented 2026 one-off events", () => {

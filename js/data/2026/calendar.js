@@ -1,6 +1,4 @@
-// 2026 schedule extracted from the original events.js, preserving its
-// existing dates and recurrence rules. Additional published 2026 Open Art
-// Spaces dates and W4 Art & Design Winter Fair dates are included.
+// 2026 schedule with organiser-published one-off market dates.
 export const calendarData = {
   year: 2026,
   status: "established",
@@ -11,8 +9,27 @@ export const calendarData = {
     { date: "2026-12-12", eventId: "makersMarket" },
     { date: "2026-03-29", eventId: "openArtMarket" },
     { date: "2026-05-31", eventId: "openArtMarket" },
-    { date: "2026-08-30", eventId: "openArtMarket" },
+    { date: "2026-08-02", eventId: "openArtMarket" },
+    { date: "2026-11-01", eventId: "openArtMarket" },
     { date: "2026-11-29", eventId: "openArtMarket" },
+    ...[
+      "2026-12-05",
+      "2026-12-06",
+      "2026-12-19",
+      "2026-12-20",
+      "2026-12-21",
+      "2026-12-22",
+      "2026-12-23",
+      "2026-12-24"
+    ].map(date => ({
+      date,
+      eventId: "duckPond",
+      overrides: {
+        time: "10:00–15:00",
+        link: "https://duckpondmarket.com/chiswick",
+        appendDateToLink: false
+      }
+    })),
     {
       date: "2026-11-20",
       eventId: "winterFair",
@@ -33,8 +50,17 @@ export const calendarData = {
     }
   ],
   monthlyEvents: [
-    { sunday: 1, eventId: "flowers" },
-    { sunday: 1, eventId: "duckPond" },
+    {
+      sunday: 1,
+      eventId: "flowers",
+      skipMonths: [0],
+      overridesByDate: {
+        "2026-12-06": {
+          time: "09:00–15:30"
+        }
+      }
+    },
+    { sunday: 1, eventId: "duckPond", skipDates: ["2026-12-06"] },
     { sunday: 1, eventId: "carBoot", skipMonths: [0] },
     { sunday: 2, eventId: "antiques" },
     { sunday: 3, eventId: "cheese" },
@@ -42,9 +68,5 @@ export const calendarData = {
   ],
   weeklyEvents: [
     { eventId: "foodMarket", skipDates: ["2026-04-05"] }
-  ],
-  reviewNotes: [
-    "Flower Market source pages publish seasonal hours, but the winter opening time conflicts between the organiser's calendar, FAQ and December special-event listing. Preserve the original 2026 baseline pending organiser confirmation.",
-    "Duck Pond has additional festive dates in December beyond its normal first-Sunday schedule. Published sources disagree on weekend closing times; model each confirmed date as an individual event after organiser verification."
   ]
 };
