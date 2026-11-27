@@ -13,10 +13,13 @@ describe("eventsForSunday", () => {
 
     const expected = events.regularEvents
       .filter(e => e.sunday === 1)
-      .map(e => ({
-        ...e,
-        link: e.link + ymd
-      }))
+      .map(e => {
+        const { appendDateToLink = true, ...eventData } = e;
+        return {
+          ...eventData,
+          link: appendDateToLink ? e.link + ymd : e.link
+        };
+      })
       .concat(events.everySundayEvents)
 
     expect(result).toEqual(expected)
@@ -34,16 +37,28 @@ describe("eventsForSunday", () => {
 
     const expected = events.regularEvents
       .filter(e => e.sunday === 1 && !e.skipJanuary)
-      .map(e => ({
-        ...e,
-        link: e.link + ymd
-      }))
+      .map(e => {
+        const { appendDateToLink = true, ...eventData } = e;
+        return {
+          ...eventData,
+          link: appendDateToLink ? e.link + ymd : e.link
+        };
+      })
       .concat(events.everySundayEvents)
 
     expect(result).toEqual(expected)
     expect(result.length).toEqual(3)
 
   })
+
+
+  test("uses the organiser's official website for the Car Boot Sale without adding a date", () => {
+    const result = events.eventsForSunday(1, new Date(2026, 1, 1), "2026-02-01");
+    const carBoot = result.find(event => event.name === "Car Boot Sale");
+
+    expect(carBoot.link).toBe("https://chiswickcarbootsale.com/");
+    expect(carBoot).not.toHaveProperty("appendDateToLink");
+  });
 
   test("skips food market for Easter Sunday", () => {
 
@@ -55,10 +70,13 @@ describe("eventsForSunday", () => {
 
     const expected = events.regularEvents
       .filter(e => e.sunday === 1)
-      .map(e => ({
-        ...e,
-        link: e.link + ymd
-      }))
+      .map(e => {
+        const { appendDateToLink = true, ...eventData } = e;
+        return {
+          ...eventData,
+          link: appendDateToLink ? e.link + ymd : e.link
+        };
+      })
 
     expect(result).toEqual(expected)
     expect(result.length).toEqual(3)
@@ -68,6 +86,22 @@ describe("eventsForSunday", () => {
 })
 
 describe("getEventsForDate", () => {
+
+  test("contains all four announced 2026 Chiswick Open Art Market dates", () => {
+    const artEvents = events.individualEvents.filter(event => event.name === "Art");
+
+    expect(artEvents.map(event => event.date)).toEqual([
+      "2026-03-29",
+      "2026-05-31",
+      "2026-08-30",
+      "2026-11-29"
+    ]);
+
+    artEvents.forEach(event => {
+      expect(event.time).toBe("11:00–16:00");
+      expect(event.link).toBe("https://www.openartspaces.co.uk/market");
+    });
+  });
 
   test("includes events for matching date", () => {
 

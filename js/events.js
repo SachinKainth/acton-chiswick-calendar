@@ -49,7 +49,37 @@ export const individualEvents = [
 		time: "11:00–16:00",
 		area: "chiswick",
 		class: "art",
-		link: "https://chiswickcalendar.co.uk/event/open-art-market-chiswick-high-road/"
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-05-31",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-08-30",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-11-29",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
 	}
 
 ]
@@ -84,7 +114,8 @@ export const regularEvents = [
 		time: "06:30–12:30",
 		area: "chiswick",
 		class: "car",
-		link: "https://chiswickcalendar.co.uk/event/chiswick-car-boot-sale-chiswick-school/"
+		link: "https://chiswickcarbootsale.com/",
+		appendDateToLink: false
 	},
 
 	{
@@ -138,10 +169,13 @@ export function eventsForSunday(sunday, date, ymd) {
 			if (event.skipJanuary && date.getMonth() === 0) return false
 			return true
 		})
-		.map(event => ({
-			...event,
-			link: event.link + ymd
-		}))
+		.map(event => {
+			const { appendDateToLink = true, ...eventData } = event
+			return {
+				...eventData,
+				link: appendDateToLink ? event.link + ymd : event.link
+			}
+		})
 
 	const dateStr = dateUtils.formatDate(date)
 
