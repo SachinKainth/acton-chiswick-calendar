@@ -117,3 +117,21 @@ body{
 		 width:auto;
 	}
 }
+
+
+.build-info {
+  margin-top: 24px;
+  text-align: right;
+  color: #777;
+  font-size: 0.7rem;
+}
+
+.build-info a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.build-info a:hover,
+.build-info a:focus-visible {
+  text-decoration: underline;
+}
