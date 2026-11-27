@@ -38,6 +38,14 @@ export const eventCatalog = {
     class: "duck",
     link: "https://duckpondmarket.com/chiswick"
   },
+  duckPondChristmas: {
+    name: "Duck Pond Christmas Market",
+    location: "Chiswick House & Gardens",
+    time: "10:00–15:00",
+    area: "chiswick",
+    class: "duckchristmas",
+    link: "https://duckpondmarket.com/chiswick"
+  },
   carBoot: {
     name: "Car Boot Sale",
     location: "Chiswick School",
