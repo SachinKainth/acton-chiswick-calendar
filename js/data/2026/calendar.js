@@ -33,7 +33,7 @@ export const calendarData = {
     }
   ],
   monthlyEvents: [
-    { sunday: 1, eventId: "flowers" },
+    { sunday: 1, eventId: "flowers", skipMonths: [0] },
     { sunday: 1, eventId: "duckPond" },
     { sunday: 1, eventId: "carBoot", skipMonths: [0] },
     { sunday: 2, eventId: "antiques" },
@@ -44,7 +44,7 @@ export const calendarData = {
     { eventId: "foodMarket", skipDates: ["2026-04-05"] }
   ],
   reviewNotes: [
-    "Flower Market source pages publish seasonal hours, but the winter opening time conflicts between the organiser's calendar, FAQ and December special-event listing. Preserve the original 2026 baseline pending organiser confirmation.",
+    "Flower Market is not held in January. Seasonal hours are modelled as 09:00–16:00 May–September and 09:30–15:30 October–April; the organiser's FAQ and December home-page listing conflict with the calendar/dated listings on the winter opening time.",
     "Duck Pond has additional festive dates in December beyond its normal first-Sunday schedule. Published sources disagree on weekend closing times; model each confirmed date as an individual event after organiser verification."
   ]
 };
