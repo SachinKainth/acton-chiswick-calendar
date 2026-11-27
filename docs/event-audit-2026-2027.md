@@ -180,14 +180,36 @@ Primary organiser sources:
 
 These are genuine organiser announcements, unlike recurrence-generated third-party calendar pages. The Open Art Show's 4–9 February dates are published; Chelsea Art Market's Spring 2027 return is published but its exact date is not.
 
-### Scope decision and next design decisions
+### Agreed scope for 2027 onward
 
-The project owner has chosen **Greater London** as the geographic scope for the expanded calendar. This is a deliberate change from the original Acton & Chiswick focus; it does not mean every London event should be included.
+The project owner has chosen **Greater London** as the geographic scope for the expanded calendar, starting with the 2027 schedule. The 2026 calendar remains the historical Acton & Chiswick record; it will not be retrospectively expanded or reworked.
 
-The following product decisions still need to be settled before implementation:
+The agreed event categories are:
 
-1. **Event types:** include markets only, or also curated exhibitions (such as Open Art Show), fairs, pop-ups and similar public shopping/creative events. The Open Art Show is an exhibition rather than a market, so its inclusion depends on this decision.
-2. **Selection policy:** define what makes an event relevant enough to include (for example, public visitor access, meaningful market/fair/exhibition character, and a reliable organiser source).
-3. **Date confidence:** decide how to display recurring events and date-TBC announcements. A confirmed season or recurrence should not be presented as a confirmed individual date; consider a separate watchlist for announcements that cannot yet be placed on a calendar.
+- Markets: food, farmers', antiques, vintage and craft markets.
+- Makers and artisan markets.
+- Art markets.
+- Fairs, including seasonal, Christmas, design and specialist fairs.
+- Exhibitions.
+- Pop-ups and curated temporary shopping events.
 
-The Greater London geography is agreed, but neither candidate is added to `js/data/2027/calendar.js` by this documentation change. Before implementation, update the application title, README, event taxonomy, filters/legend and source policy together so the product's new remit is explicit.
+Include public visitor events with credible organiser information. The categories describe the event's nature; they should not imply that an exhibition is a market.
+
+Use explicit date-confidence distinctions:
+
+- **Confirmed:** the organiser has published the exact date and venue.
+- **Date TBC:** the organiser has announced the event or season, but not the exact date. Keep it in an announcements/watchlist view, not as a dated calendar entry.
+- **Recurring:** the organiser publishes a regular pattern, but an individual occurrence has not necessarily been separately confirmed. Display the recurrence as provisional where appropriate.
+
+### 2027 candidates identified
+
+| Event | Published details | Category | 2027 treatment |
+|---|---|---|---|
+| Open Art Show | 4–9 February 2027, JM Gallery, 230 Portobello Road, London W11 1LJ. | Exhibition | Exact dates and venue are published by the organiser. Add to the 2027 schedule when the expanded event model is implemented. |
+| Chelsea Art Market | Spring 2027, Duke of York Square, Chelsea; 11:00–16:00. Exact date TBC. | Art market | Record in the announcements/watchlist view; do not create a dated calendar event until the organiser publishes the date. |
+
+Primary organiser sources:
+- Open Art Show: https://www.openartspaces.co.uk/show
+- Chelsea Art Market: https://www.openartspaces.co.uk/chelsea-art-market
+
+The 2027 expansion should update the application title, README, event taxonomy, filters/legend and source policy together. Keep the 2026 schedule and its existing Acton & Chiswick remit unchanged.
