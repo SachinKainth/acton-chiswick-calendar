@@ -1,5 +1,5 @@
 // Provisional 2027 schedule. The recurring pattern is carried forward from
-// 2026; individual 2027 event dates have deliberately not been invented.
+// 2026; add individual dates only when published by event organisers.
 // Recurring exclusions use 1-based months and ISO YYYY-MM-DD dates.
 export const calendarData = {
   year: 2027,
