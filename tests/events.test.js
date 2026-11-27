@@ -28,7 +28,7 @@ describe("getRecurringEvents", () => {
     const winter = eventEngine.getRecurringEvents(new Date(2026, 0, 4), {
       ...calendar2026,
       monthlyEvents: calendar2026.monthlyEvents.map(event =>
-        event.eventId === "flowers" ? { ...event, skipMonths: [] } : event
+        event.eventId === "flowers" ? { ...event, exclude: { months: [] } } : event
       )
     });
     const summer = eventEngine.getRecurringEvents(new Date(2026, 5, 7), calendar2026);
@@ -141,7 +141,7 @@ describe("getRecurringEvents", () => {
       monthlyEvents: [{
         sunday: 1,
         eventId: "flowers",
-        skipDates: ["2026-02-01"]
+        exclude: { dates: ["2026-02-01"] }
       }],
       weeklyEvents: [],
       individualEvents: []
@@ -150,6 +150,73 @@ describe("getRecurringEvents", () => {
     expect(
       eventEngine.getRecurringEvents(new Date(2026, 1, 1), annualVariant)
     ).toEqual([]);
+  });
+
+  test("uses 1-based month exclusions for both monthly and weekly events", () => {
+    const annualVariant = {
+      year: 2026,
+      monthlyEvents: [{
+        sunday: 1,
+        eventId: "flowers",
+        exclude: { months: [1] }
+      }],
+      weeklyEvents: [{
+        eventId: "foodMarket",
+        exclude: { months: [1] }
+      }],
+      individualEvents: []
+    };
+
+    expect(eventEngine.getRecurringEvents(new Date(2026, 0, 4), annualVariant))
+      .toEqual([]);
+    expect(eventEngine.getRecurringEvents(new Date(2026, 1, 1), annualVariant)
+      .map(event => event.name)).toEqual(["Flowers", "The Food Market"]);
+  });
+
+  test("rejects invalid recurring-event exclusion months and dates", () => {
+    const invalidMonth = {
+      year: 2026,
+      monthlyEvents: [{
+        sunday: 1,
+        eventId: "flowers",
+        exclude: { months: [0] }
+      }],
+      weeklyEvents: [],
+      individualEvents: []
+    };
+    const invalidDate = {
+      year: 2026,
+      monthlyEvents: [],
+      weeklyEvents: [{
+        eventId: "foodMarket",
+        exclude: { dates: ["2026-02-30"] }
+      }],
+      individualEvents: []
+    };
+
+    expect(() => eventEngine.getRecurringEvents(
+      new Date(2026, 1, 1), invalidMonth
+    )).toThrow("Event exclusion months must be integers from 1 to 12");
+    expect(() => eventEngine.getRecurringEvents(
+      new Date(2026, 1, 1), invalidDate
+    )).toThrow("Event exclusion dates must be valid YYYY-MM-DD dates");
+  });
+
+  test("rejects legacy exclusion fields rather than silently ignoring them", () => {
+    const legacyCalendar = {
+      year: 2026,
+      monthlyEvents: [{
+        sunday: 1,
+        eventId: "flowers",
+        skipMonths: [0]
+      }],
+      weeklyEvents: [],
+      individualEvents: []
+    };
+
+    expect(() => eventEngine.getRecurringEvents(
+      new Date(2026, 1, 1), legacyCalendar
+    )).toThrow("Use event.exclude.months and event.exclude.dates");
   });
 
   test("returns no recurring events on a non-Sunday", () => {

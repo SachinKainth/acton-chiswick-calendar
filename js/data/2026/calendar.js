@@ -1,4 +1,5 @@
 // 2026 schedule with organiser-published one-off market dates.
+// Recurring exclusions use 1-based months and ISO YYYY-MM-DD dates.
 export const calendarData = {
   year: 2026,
   status: "established",
@@ -47,20 +48,20 @@ export const calendarData = {
     {
       sunday: 1,
       eventId: "flowers",
-      skipMonths: [0],
+      exclude: { months: [1] },
       overridesByDate: {
         "2026-12-06": {
           time: "09:00–15:30"
         }
       }
     },
-    { sunday: 1, eventId: "duckPond", skipDates: ["2026-12-06"] },
-    { sunday: 1, eventId: "carBoot", skipMonths: [0] },
+    { sunday: 1, eventId: "duckPond", exclude: { dates: ["2026-12-06"] } },
+    { sunday: 1, eventId: "carBoot", exclude: { months: [1] } },
     { sunday: 2, eventId: "antiques" },
     { sunday: 3, eventId: "cheese" },
     { sunday: 4, eventId: "foodSt" }
   ],
   weeklyEvents: [
-    { eventId: "foodMarket", skipDates: ["2026-04-05"] }
+    { eventId: "foodMarket", exclude: { dates: ["2026-04-05"] } }
   ]
 };
