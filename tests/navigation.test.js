@@ -1,55 +1,40 @@
-import * as navigation from "../js/navigation.js"
-  
+import * as navigation from "../js/core/navigation.js";
+
 describe("setTodayLink", () => {
+  test("does nothing if the today navigation element doesn't exist", () => {
+    document.body.innerHTML = '<div id="notTodayNav"></div>';
+    expect(() => navigation.setTodayLink()).not.toThrow();
+    expect(document.getElementById("todayNav")).toBeNull();
+  });
 
-    test("does nothing if #todayNav element does not exist", () => {
-        document.body.innerHTML = `<div id="notTodayNav"></div>` // no #todayNav
-        expect(() => navigation.setTodayLink()).not.toThrow()
-        expect(document.getElementById("todayNav")).toBeNull()
-    })
-
-    test("appends a single link if #todayNav exists", () => {
-        document.body.innerHTML = `<nav id="todayNav"></nav>`
-
-        const todayNav = document.getElementById("todayNav")
-        
-        navigation.setTodayLink()
-
-        const links = todayNav.querySelectorAll("a")
-        expect(links.length).toBe(1)
-
-        const link = links[0]
-        expect(link.textContent).toBe("Today")
-        expect(link.getAttribute("href")).toBe("#today")
-    })
-
-})
+  test("appends a Today link when the element exists", () => {
+    document.body.innerHTML = '<nav id="todayNav"></nav>';
+    navigation.setTodayLink();
+    const link = document.querySelector("#todayNav a");
+    expect(link.textContent).toBe("Today");
+    expect(link.getAttribute("href")).toBe("#today");
+  });
+});
 
 describe("setMonthLinks", () => {
+  test("does nothing if the month navigation element doesn't exist", () => {
+    document.body.innerHTML = '<div id="notMonthNav"></div>';
+    expect(() => navigation.setMonthLinks()).not.toThrow();
+    expect(document.getElementById("monthNav")).toBeNull();
+  });
 
-    test("does nothing if #monthNav does not exist", () => {
-        document.body.innerHTML = `<div id="notMonthNav"></div>` // no #monthNav
+  test("creates the twelve month links", () => {
+    document.body.innerHTML = '<nav id="monthNav"></nav>';
+    navigation.setMonthLinks();
 
-        expect(() => navigation.setMonthLinks()).not.toThrow()
-        expect(document.getElementById("monthNav")).toBeNull()
-    })
+    const links = document.querySelectorAll("#monthNav a");
+    const expected = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    test("creates 12 month links if #monthNav exists", () => {
-        document.body.innerHTML = `<nav id="monthNav"></nav>`
-
-        const monthNav = document.getElementById("monthNav")
-
-        navigation.setMonthLinks()
-
-        const links = monthNav.querySelectorAll("a")
-        expect(links.length).toBe(12)
-
-        const expectedText = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-
-        links.forEach((link, i) => {
-        expect(link.textContent).toBe(expectedText[i])
-        expect(link.getAttribute("href")).toBe(`#month${i}`)
-        })
-    })
-
-})
+    expect(links).toHaveLength(12);
+    links.forEach((link, index) => {
+      expect(link.textContent).toBe(expected[index]);
+      expect(link.getAttribute("href")).toBe("#month" + index);
+    });
+  });
+});

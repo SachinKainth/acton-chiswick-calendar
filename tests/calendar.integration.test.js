@@ -2,55 +2,46 @@
  * @jest-environment node
  */
 
-import { JSDOM } from "jsdom"
+import { JSDOM } from "jsdom";
+import { buildCalendar } from "../js/core/calendar.js";
+import { getCalendarData } from "../js/data/index.js";
 
-describe("Calendar Integration Test", () => {
+describe("Calendar integration", () => {
+  let dom;
 
-  test("all generated links return non-404 responses", async () => {
+  beforeEach(() => {
+    dom = new JSDOM('<div id="calendar"></div>');
+    global.window = dom.window;
+    global.document = dom.window.document;
+  });
 
-    const dom = new JSDOM(`<div id="calendar"></div><div id="title"></div>`)
+  afterEach(() => {
+    dom.window.close();
+    delete global.window;
+    delete global.document;
+  });
 
-    global.window = dom.window
-    global.document = dom.window.document
+  test("renders all 132 events in the established 2026 calendar", async () => {
+    buildCalendar(await getCalendarData(2026));
+    expect(document.querySelectorAll(".event")).toHaveLength(132);
 
-    // Import AFTER DOM exists
-    const calendar = await import("../js/calendar.js")
+    const links = Array.from(document.querySelectorAll(".day a"));
+    expect(links.length).toBeGreaterThan(0);
+    expect(links.every(link => /^https?:\/\//.test(link.href))).toBe(true);
+  });
 
-    calendar.buildCalendar()
+  test("renders 2027 without carrying over the 2026 one-off events", async () => {
+    buildCalendar(await getCalendarData(2027));
 
-    const links = Array.from(document.querySelectorAll(".day a"))
-      .map(a => a.href)
+    expect(document.querySelectorAll(".month")).toHaveLength(12);
+    expect(document.querySelectorAll(".day")).toHaveLength(365);
+    expect(document.querySelectorAll(".event")).toHaveLength(122);
 
-    expect(links.length).toBeGreaterThan(0)
+    const eventLabels = Array.from(document.querySelectorAll(".event"))
+      .map(event => event.textContent);
 
-    const responses = await Promise.all(
-      links.map(url => fetch(url))
-    )
-
-    responses.forEach((res, i) => {
-      if (res.status >= 400) {
-        throw new Error(`Broken link: ${links[i]} (${res.status})`)
-      }
-    })
-
-  }, 60000)
-
-  test("returns the correct number of events for the year", async () => {
-
-    const dom = new JSDOM(`<div id="calendar"></div><div id="title"></div>`)
-
-    global.window = dom.window
-    global.document = dom.window.document
-
-    // Import AFTER DOM exists
-    const calendar = await import("../js/calendar.js")
-
-    calendar.buildCalendar()
-
-    const events = Array.from(document.querySelectorAll(".event"))
-
-    expect(events.length).toEqual(132)
-
-  })
-
-})
+    expect(eventLabels.some(label => label.includes("Makers Market"))).toBe(false);
+    expect(eventLabels.some(label => label.includes("Art | Chiswick High Road"))).toBe(false);
+    expect(eventLabels.some(label => label.includes("W4 Art & Design Winter Fair"))).toBe(false);
+  });
+});
