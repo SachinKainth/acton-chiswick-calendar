@@ -13,6 +13,6 @@ export const calendarData = {
     { sunday: 4, eventId: "foodSt" }
   ],
   weeklyEvents: [
-    { eventId: "foodMarket" }
+    { eventId: "foodMarket", skipDates: ["2027-03-28"] }
   ]
 };
