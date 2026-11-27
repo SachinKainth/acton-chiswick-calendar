@@ -14,6 +14,6 @@ export const calendarData = {
     { sunday: 4, eventId: "foodSt" }
   ],
   weeklyEvents: [
-    { eventId: "foodMarket", exclude: { dates: ["2027-03-28"] } }
+    { eventId: "foodMarket", exclude: { dates: ["2027-03-28", "2027-12-26"] } }
   ]
 };
