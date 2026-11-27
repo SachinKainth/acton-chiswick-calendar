@@ -49,18 +49,37 @@ The following decisions were applied to the calendar after comparing the availab
 
 | Event | Recurrence / dates checked | Hours and location | 2027 status / action |
 |---|---|---|---|
-| Chiswick Flower Market | First Sunday monthly except January. | Summer (May–September) 09:00–16:00; normal winter (October–April) 09:30–15:30. The 6 December 2026 Christmas Market has a date-specific 09:00–15:30 exception. | Recurrence carried forward provisionally; recheck 2027 hours when published. |
-| Duck Pond Market | First Sunday monthly, plus festive dates 5, 6, 19, 20, 21, 22, 23 and 24 December 2026. The normal recurring 6 December entry is suppressed and replaced by one individual festive entry. | Regular market 10:00–16:00. Festive listings use 10:00–15:00, Chiswick House & Gardens. | Festive dates are 2026 only. Confirm any future programme independently. |
-| Chiswick Car Boot Sale | First Sunday monthly except January; organiser publishes 6 December 2026 and 7 February, 7 March and 4 April 2027. | 06:30–12:30, Chiswick School. | Recurrence and January exception match code; published early-2027 dates support the recurrence. |
-| Chiswick Antiques & Vintage Market | Second Sunday monthly; checked 8 November 2026 listing. | 09:00–15:00, Old Market Place / south side of High Road. | Recurrence carried forward provisionally. |
-| Chiswick Cheese Market | Third Sunday monthly; official site lists all 2026 monthly dates. | 09:30–15:00, Old Market Place. | Recurrence carried forward provisionally. |
-| FoodSt | Fourth Sunday monthly; checked October and December 2026 listings. | 11:00–16:00, Old Market Place. | Recurrence carried forward provisionally. |
-| The Food Market | Weekly Sunday market; checked official site and location page. | 10:00–14:00, Pavilion, Market Drive, Chiswick W4 2RX. | The organiser's trader application states that the market trades every week except Easter Sunday and the Sunday after Christmas. Exclude Easter Sunday, 28 March 2027, under that standing policy. |
+| Chiswick Flower Market | First Sunday monthly except January; the organiser's calendar states this standing rule and seasonal hours. | Summer (May–September) 09:00–16:00; normal winter (October–April) 09:30–15:30. The 6 December 2026 Christmas Market has a date-specific 09:00–15:30 exception. | Standing recurrence and hours are confirmed; the official calendar has not yet listed individual 2027 dates. The trader FAQ already publishes 2027 pitch fees, indicating 2027 planning. |
+| Duck Pond Market | First Sunday monthly; the organiser's Chiswick page states this standing recurrence. 2026 festive dates are 5, 6, 19, 20, 21, 22, 23 and 24 December. | Regular market 10:00–16:00. Festive listings use 10:00–15:00, Chiswick House & Gardens. | Standing recurrence and normal hours are published, but no individual 2027 dates are listed. Check for date-specific changes and venue movements before treating every occurrence as final. |
+| Chiswick Car Boot Sale | First Sunday monthly except January; organiser publishes 6 December 2026 and 7 February, 7 March and 4 April 2027. | 06:30–12:30, Chiswick School. | The three early-2027 dates and January closure are explicitly published by the organiser; the remaining monthly dates follow its standing recurrence rule. |
+| Chiswick Antiques & Vintage Market | Second Sunday monthly; Chiswick Calendar's stable market profile describes the recurrence. | 09:00–15:00, Old Market Place / south side of High Road. | Chiswick Calendar now has generated 2027 recurrence pages, but these are not separate organiser confirmations. Keep individual 2027 dates provisional. |
+| Chiswick Cheese Market | Third Sunday monthly; the organiser's official site states the standing recurrence and hours and lists all 2026 dates. | 09:30–15:00, Old Market Place. | Standing recurrence and hours are confirmed; the official site still lists only 2026 individual dates. |
+| FoodSt | Fourth Sunday monthly; Chiswick Calendar describes the recurrence. | 11:00–16:00, Old Market Place. | Chiswick Calendar has generated 2027 dated pages (for example June and July), but these appear to be recurrence-generated and are not organiser-specific 2027 announcements. Keep individual dates provisional. |
+| The Food Market | Weekly Sunday market; official site says every Sunday. The organiser's trader application specifies two annual closures: Easter Sunday and the Sunday after Christmas. | 10:00–14:00, Pavilion, Market Drive, Chiswick W4 2RX. | Apply the standing policy to all relevant years: 5 April and 27 December 2026; 28 March and 26 December 2027. The Christmas closures were missing from the previous schedules and are added by this readiness update. |
 | Acton Makers Market | Your Acton BID page lists 18 April, 20 June, 19 September and 12 December 2026; no 2027 dates found. | 10:00–16:30, Churchfield Road, Acton W3 6AY. Dates subject to change. | Do not invent 2027 dates. |
 | Open Art Spaces | Organiser updates support Chiswick collaborations on 29 March, 31 May, 2 August, 1 November and 29 November 2026. The unsupported 30 August entry has been removed. | 11:00–16:00, Chiswick High Road / Flower Market collaboration dates as announced. | No 2027 dates found; do not invent. |
 | W4 Art & Design Winter Fair | Official site confirms 20 and 21 November 2026. | 20 November 18:00–21:00; 21 November 10:30–18:00; Christchurch Acton Green, South Parade, Chiswick W4 5LG. | No 2027 dates found; do not invent. |
 
-## 5. 2026 event-link audit
+## 5. 2027 readiness review — 27 November 2026
+
+The review separates standing recurrence rules from individually published dates. A third-party calendar's future dated URL is not treated as organiser confirmation when it appears to be generated from a recurring event series.
+
+| Event | Evidence found on 27 November 2026 | Readiness decision |
+|---|---|---|
+| Flower Market | Official calendar confirms first Sunday except January and seasonal hours. The organiser's trader FAQ already lists 2027 pitch fees, but its public calendar still lists only October–December 2026 dates. | Keep the existing recurrence and seasonal hours. Do not claim that individual 2027 dates have been separately announced. |
+| Duck Pond | Official Chiswick page confirms first Sunday monthly, 10:00–16:00. Its event listings still show only 2026 Chiswick festive dates. | Keep the monthly recurrence, but check for 2027 date-specific changes and venue movements. Do not carry forward 2026 festive dates. |
+| Car Boot Sale | Official organiser page lists 7 February, 7 March and 4 April 2027 and says there is no January sale; it also states the first-Sunday recurrence. | Existing 2027 monthly recurrence and January exclusion are supported. |
+| Antiques | Chiswick Calendar's stable market profile states second Sunday monthly. Future 2027 dated pages are visible on that calendar, but appear to be generated from the series recurrence rather than individual organiser announcements. | Keep dates provisional; do not mistake generated URLs for confirmation. |
+| Cheese Market | Official organiser site states third Sunday monthly and 09:30–15:00, but its explicit date list is still for 2026. | Standing recurrence and hours are supported; recheck the organiser's 2027 date list when published. |
+| FoodSt | Chiswick Calendar has future dated 2027 pages (including 27 June and 25 July) generated from its fourth-Sunday series. The official FoodSt site has no 2027 date list. | Do not treat those generated pages as organiser confirmation. Keep individual dates provisional. |
+| The Food Market | Official site states every Sunday, 10:00–14:00. The organiser's trader application explicitly excludes Easter Sunday and the Sunday after Christmas. | Apply both closures in 2026 and 2027; see the four exact dates in section 4. |
+| Acton Makers Market | Your Acton BID page still lists only four 2026 dates. | No 2027 dates to add. |
+| Open Art Spaces | Organiser updates found relate to 2026 Chiswick collaborations only. | No 2027 dates to add. |
+| W4 Art & Design Winter Fair | Official site remains focused on the 2026 fair. | No 2027 dates to add. |
+
+The 2027 schedule remains provisional overall. The strongest evidence is for standing monthly/weekly recurrence and the Car Boot Sale's first three published dates; this is not the same as confirmation of every future market date. No new 2027 one-off events have been added.
+
+## 6. 2026 event-link audit
 
 ### 5.1 Generated date-specific URLs checked
 
@@ -113,7 +132,7 @@ All ten destinations in the table were opened successfully during the link audit
 - Do not automatically append a date to a recurring event URL. A URL pattern is not evidence that the corresponding page exists or will remain available.
 - When auditing links, check where the page resolves, not merely whether the URL returns a successful response.
 
-## 6. Source register
+## 7. Source register
 
 The following sources informed the schedule and link decisions. The link audit's stable-destination table in section 5.2 records the destinations currently used by the calendar.
 
@@ -122,6 +141,8 @@ The following sources informed the schedule and link decisions. The link audit's
 - Flower Market dated October listing: https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-10-04/
 - Flower Market official homepage: https://chiswickflowermarket.com/
 - Duck Pond official market page: https://duckpondmarket.com/chiswick
+- Chiswick Antiques & Vintage Market stable profile (recurrence description): https://chiswickcalendar.co.uk/this-is-chiswick/places/chiswick-antiques-vintage-market/
+- FoodSt official market page: https://www.foodst.co.uk/about-our-markets
 - Chiswick House Christmas programme: https://www.chiswickhouseandgardens.org.uk/whats-on/christmas/
 - Chiswick Car Boot Sale official site: https://chiswickcarbootsale.com/home
 - Chiswick Cheese Market visitor information: https://www.chiswickcheesemarket.uk/visit-us/
@@ -131,11 +152,12 @@ The following sources informed the schedule and link decisions. The link audit's
 - Open Art Spaces market: https://www.openartspaces.co.uk/market
 - W4 Art & Design: https://www.w4artanddesign.co.uk/
 
-## 7. Outstanding checks and confidence
+## 8. Outstanding checks and confidence
 
-1. Recheck date-specific event pages and links when 2027 dates are announced. A recurring URL pattern is not proof that a future page has been published.
-2. Treat all carried-forward 2027 recurring schedules as provisional until organisers confirm them.
-3. The Duck Pond festive dates and selected 10:00–15:00 hours are based on the organiser's individual listings; the venue's blanket 10:00–16:00 Christmas programme remains a conflicting source.
-4. No 2027 dates were found for Acton Makers Market, Open Art Spaces or W4 Art & Design Winter Fair at the time of this audit; do not invent them.
+1. Recheck individual 2027 dates and links as organisers publish them. Do not mistake a recurrence-generated third-party URL for an organiser's date-specific announcement.
+2. The Flower Market, Duck Pond, Cheese Market and Food Market publish standing recurrence rules, but date-specific exceptions and cancellations can still occur. Car Boot's published early-2027 dates support its recurrence.
+3. FoodSt and Antiques have future dated 2027 pages on Chiswick Calendar, but these appear to be generated from recurring series rather than independently announced by organisers.
+4. The Duck Pond festive dates and selected 10:00–15:00 hours are based on the organiser's individual listings; the venue's blanket 10:00–16:00 Christmas programme remains a conflicting source.
+5. No 2027 dates were found for Acton Makers Market, Open Art Spaces or W4 Art & Design Winter Fair at the time of this review; do not invent them.
 
 The audit records the selected source for each discrepancy rather than implying that all sources agree. It is a dated snapshot and should be updated when organisers publish new information.
