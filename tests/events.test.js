@@ -87,6 +87,22 @@ describe("eventsForSunday", () => {
 
 describe("getEventsForDate", () => {
 
+  test("contains all four announced 2026 Chiswick Open Art Market dates", () => {
+    const artEvents = events.individualEvents.filter(event => event.name === "Art");
+
+    expect(artEvents.map(event => event.date)).toEqual([
+      "2026-03-29",
+      "2026-05-31",
+      "2026-08-30",
+      "2026-11-29"
+    ]);
+
+    artEvents.forEach(event => {
+      expect(event.time).toBe("11:00–16:00");
+      expect(event.link).toBe("https://www.openartspaces.co.uk/market");
+    });
+  });
+
   test("includes events for matching date", () => {
 
     const event = events.individualEvents[0]
