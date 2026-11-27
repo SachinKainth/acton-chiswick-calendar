@@ -11,7 +11,26 @@ This document is the consolidated record of two audits:
 
 The audit distinguishes confirmed organiser-published information from recurring patterns carried forward for planning. A recurring pattern does not, by itself, confirm every 2027 date. The public calendar year remains controlled by `ACTIVE_YEAR`; this audit does not activate 2027.
 
-## 2. Schedule discrepancy decisions
+## 2. Recurring-event exclusion model
+
+The annual schedule uses one `exclude` object for exceptions to recurring events:
+
+```js
+exclude: {
+  months: [1],                 // 1–12; 1 is January
+  dates: ["2026-12-06"]        // exact local calendar dates, YYYY-MM-DD
+}
+```
+
+- `months` and `dates` are optional arrays; an omitted array means no exclusions at that granularity.
+- Month numbers are one-based, matching `overridesByMonth` and ordinary calendar notation.
+- Date exclusions must be real calendar dates in `YYYY-MM-DD` form.
+- The event engine validates the object shape, supported keys, month range and date values before applying exclusions.
+- The same rules apply to monthly and weekly recurring events. This keeps the exception mechanism independent of recurrence frequency.
+
+This replaces the separate `skipMonths` and `skipDates` properties. Keeping two typed arrays inside one object is clearer than a flat list of tagged exception records: month-wide and date-specific exclusions remain easy to scan, while validation and future extension have one namespace. The old fields were internal annual-data details, not a public API; all in-repository schedules and tests are migrated together, so no compatibility shim is retained. Individual one-off events are still represented in `individualEvents`, not as recurring exclusions.
+
+## 3. Schedule discrepancy decisions
 
 The following decisions were applied to the calendar after comparing the available sources.
 
@@ -26,7 +45,7 @@ The following decisions were applied to the calendar after comparing the availab
 | 8 | Open Art Spaces November | Organiser's November update | Add the announced 1 November Chiswick Flower Market collaboration. |
 | 9 | Flower Market January recurrence | Official Flower Market calendar | Keep the January exclusion in both annual schedules. |
 
-## 3. Event schedule findings
+## 4. Event schedule findings
 
 | Event | Recurrence / dates checked | Hours and location | 2027 status / action |
 |---|---|---|---|
@@ -41,7 +60,7 @@ The following decisions were applied to the calendar after comparing the availab
 | Open Art Spaces | Organiser updates support Chiswick collaborations on 29 March, 31 May, 2 August, 1 November and 29 November 2026. The unsupported 30 August entry has been removed. | 11:00–16:00, Chiswick High Road / Flower Market collaboration dates as announced. | No 2027 dates found; do not invent. |
 | W4 Art & Design Winter Fair | Official site confirms 20 and 21 November 2026. | 20 November 18:00–21:00; 21 November 10:30–18:00; Christchurch Acton Green, South Parade, Chiswick W4 5LG. | No 2027 dates found; do not invent. |
 
-## 4. 2026 event-link audit
+## 5. 2026 event-link audit
 
 ### 4.1 Generated date-specific URLs checked
 
@@ -94,7 +113,7 @@ All ten destinations in the table were opened successfully during the link audit
 - Do not automatically append a date to a recurring event URL. A URL pattern is not evidence that the corresponding page exists or will remain available.
 - When auditing links, check where the page resolves, not merely whether the URL returns a successful response.
 
-## 5. Source register
+## 6. Source register
 
 The following sources informed the schedule and link decisions. The link audit's stable-destination table in section 4.2 records the destinations currently used by the calendar.
 
@@ -112,7 +131,7 @@ The following sources informed the schedule and link decisions. The link audit's
 - Open Art Spaces market: https://www.openartspaces.co.uk/market
 - W4 Art & Design: https://www.w4artanddesign.co.uk/
 
-## 6. Outstanding checks and confidence
+## 7. Outstanding checks and confidence
 
 1. Recheck date-specific event pages and links when 2027 dates are announced. A recurring URL pattern is not proof that a future page has been published.
 2. Treat all carried-forward 2027 recurring schedules as provisional until organisers confirm them.
