@@ -77,9 +77,9 @@ describe("getRecurringEvents", () => {
     ]);
   });
 
-  test("does not assume an unverified 2027 Easter closure", () => {
+  test("skips The Food Market on Easter Sunday 2027 under the organiser policy", () => {
     const result = eventEngine.getRecurringEvents(new Date(2027, 2, 28), calendar2027);
-    expect(result.some(event => event.name === "The Food Market")).toBe(true);
+    expect(result.some(event => event.name === "The Food Market")).toBe(false);
   });
 
   test("supports month-specific URL, time and date-suffix overrides", () => {
