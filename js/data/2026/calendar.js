@@ -26,8 +26,6 @@ export const calendarData = {
       eventId: "duckPond",
       overrides: {
         time: "10:00–15:00",
-        link: "https://duckpondmarket.com/chiswick",
-        appendDateToLink: false
       }
     })),
     {
@@ -35,8 +33,6 @@ export const calendarData = {
       eventId: "winterFair",
       overrides: {
         time: "18:00–21:00",
-        link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-20/",
-        appendDateToLink: false
       }
     },
     {
@@ -44,8 +40,6 @@ export const calendarData = {
       eventId: "winterFair",
       overrides: {
         time: "10:30–18:00",
-        link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-21/",
-        appendDateToLink: false
       }
     }
   ],

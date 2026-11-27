@@ -28,8 +28,7 @@ export const eventCatalog = {
     },
     area: "chiswick",
     class: "flowers",
-    link: "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/",
-    appendDateToLink: true
+    link: "https://chiswickflowermarket.com/calendar/"
   },
   duckPond: {
     name: "Duck Pond",
@@ -37,8 +36,7 @@ export const eventCatalog = {
     time: "10:00–16:00",
     area: "chiswick",
     class: "duck",
-    link: "https://chiswickcalendar.co.uk/event/duck-pond-market-chiswick-house-gardens/",
-    appendDateToLink: true
+    link: "https://duckpondmarket.com/chiswick"
   },
   carBoot: {
     name: "Car Boot Sale",
@@ -55,8 +53,7 @@ export const eventCatalog = {
     time: "09:00–15:00",
     area: "chiswick",
     class: "antiques",
-    link: "https://chiswickcalendar.co.uk/event/chiswick-antiques-vintage-market-old-market-place/",
-    appendDateToLink: true
+    link: "https://chiswickcalendar.co.uk/this-is-chiswick/places/chiswick-antiques-vintage-market/"
   },
   cheese: {
     name: "Cheese",
@@ -64,8 +61,7 @@ export const eventCatalog = {
     time: "09:30–15:00",
     area: "chiswick",
     class: "cheese",
-    link: "https://chiswickcalendar.co.uk/event/chiswick-cheese-market-the-old-market-place/",
-    appendDateToLink: true
+    link: "https://www.chiswickcheesemarket.uk/"
   },
   foodSt: {
     name: "FoodSt",
@@ -73,8 +69,7 @@ export const eventCatalog = {
     time: "11:00–16:00",
     area: "chiswick",
     class: "streetfood",
-    link: "https://chiswickcalendar.co.uk/event/foodst-old-market-place/",
-    appendDateToLink: true
+    link: "https://www.foodst.co.uk/"
   },
   foodMarket: {
     name: "The Food Market",
@@ -105,6 +100,7 @@ export const eventCatalog = {
     name: "W4 Art & Design Winter Fair",
     location: "Christchurch Acton Green",
     area: "chiswick",
-    class: "winterfair"
+    class: "winterfair",
+    link: "https://www.w4artanddesign.co.uk/"
   }
 };
