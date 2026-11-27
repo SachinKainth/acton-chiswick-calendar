@@ -162,3 +162,30 @@ The following sources informed the schedule and link decisions. The link audit's
 5. No 2027 dates were found for Acton Makers Market, Open Art Spaces or W4 Art & Design Winter Fair at the time of this review; do not invent them.
 
 The audit records the selected source for each discrepancy rather than implying that all sources agree. It is a dated snapshot and should be updated when organisers publish new information.
+
+## 9. Potential expansion beyond Acton and Chiswick
+
+The current application and annual schedule are focused on markets in Acton and Chiswick. A possible next direction is to make it a broader markets and fairs calendar, including selected events elsewhere in London. This would be a change of scope, not simply another 2027 date audit.
+
+Two Open Art Spaces events illustrate the opportunity:
+
+| Event | Published details | Classification | Schedule decision |
+|---|---|---|---|
+| Open Art Show | 4–9 February 2027, JM Gallery, 230 Portobello Road, London W11 1LJ. | Curated multi-day art exhibition / sales event; not an outdoor market. | Confirmed by the organiser, but outside the current Acton/Chiswick geographic scope. Candidate only if the calendar expands to include exhibitions and wider London events. |
+| Chelsea Art Market | Spring 2027, Duke of York Square, Chelsea; 11:00–16:00. The organiser says the date is TBC. | Outdoor art and makers market. | The 2027 return is confirmed, but there is no date to schedule yet. Candidate if the calendar expands beyond Acton and Chiswick. |
+
+Primary organiser sources:
+- Open Art Show: https://www.openartspaces.co.uk/show
+- Chelsea Art Market: https://www.openartspaces.co.uk/chelsea-art-market
+
+These are genuine organiser announcements, unlike recurrence-generated third-party calendar pages. The Open Art Show's 4–9 February dates are published; Chelsea Art Market's Spring 2027 return is published but its exact date is not.
+
+### Scope decision still required
+
+Before adding these events to the live annual schedule, decide:
+
+1. **Geography:** remain Acton and Chiswick, expand to West London, or include selected events across Greater London.
+2. **Event types:** markets only, or also include curated exhibitions such as Open Art Show, fairs, pop-ups and similar public shopping/creative events.
+3. **Selection policy:** whether to include only public visitor events with confirmed dates and locations, and whether recurring or date-TBC events belong in a separate watchlist rather than the calendar.
+
+Until that scope is agreed, keep both events in this candidate register and do not add them to `js/data/2027/calendar.js`. If the remit changes, update the application title, README, event taxonomy, filters/legend and source policy together rather than quietly mixing London-wide events into an Acton & Chiswick calendar.
