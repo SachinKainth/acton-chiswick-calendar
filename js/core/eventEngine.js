@@ -3,7 +3,7 @@ import { eventCatalog } from "../data/eventCatalog.js";
 
 function isValidDateKey(value) {
   if (typeof value !== "string") return false;
-  const match = /^(\\d{4})-(\\d{2})-(\\d{2})$/.exec(value);
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
   if (!match) return false;
 
   const year = Number(match[1]);
@@ -20,6 +20,10 @@ function isValidDateKey(value) {
 }
 
 function validateExclusions(event) {
+  if ("skipMonths" in event || "skipDates" in event) {
+    throw new TypeError("Use event.exclude.months and event.exclude.dates");
+  }
+
   const exclude = event.exclude;
   if (exclude === undefined) return;
 
@@ -34,8 +38,8 @@ function validateExclusions(event) {
     throw new TypeError("Unknown event exclusion key: " + unknownKeys[0]);
   }
 
-  const months = exclude.months ?? [];
-  const dates = exclude.dates ?? [];
+  const months = exclude.months === undefined ? [] : exclude.months;
+  const dates = exclude.dates === undefined ? [] : exclude.dates;
   if (!Array.isArray(months)) {
     throw new TypeError("Event exclude.months must be an array");
   }
