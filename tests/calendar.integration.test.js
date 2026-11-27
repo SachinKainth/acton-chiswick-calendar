@@ -31,17 +31,17 @@ describe("Calendar integration", () => {
     expect(links.every(link => /^https?:\/\//.test(link.href))).toBe(true);
   });
 
-  test("renders 2027 with the six announced Open Art Show dates", async () => {
+  test("renders the 2027 calendar with confirmed Greater London event additions", async () => {
     buildCalendar(await getCalendarData(2027));
 
     expect(document.querySelectorAll(".month")).toHaveLength(12);
     expect(document.querySelectorAll(".day")).toHaveLength(365);
-    expect(document.querySelectorAll(".event")).toHaveLength(126);
+    expect(document.querySelectorAll(".event")).toHaveLength(214);
 
     const eventLabels = Array.from(document.querySelectorAll(".event"))
       .map(event => event.textContent);
 
-    expect(eventLabels.some(label => label.includes("Makers Market"))).toBe(false);
+    expect(eventLabels.some(label => label.includes("Local Makers Market"))).toBe(true);
     expect(eventLabels.some(label => label.includes("Art | Chiswick High Road"))).toBe(false);
     expect(eventLabels.some(label => label.includes("W4 Art & Design Winter Fair"))).toBe(false);
     expect(document.querySelectorAll('.event[data-category="exhibitions"]')).toHaveLength(6);
