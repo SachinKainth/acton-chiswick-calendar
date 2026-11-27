@@ -30,8 +30,8 @@ describe("setPageTitle", () => {
       '<title class="title"></title><h1 class="title"></h1>';
     dom.setPageTitle(2027);
     const elements = document.getElementsByClassName("title");
-    expect(elements[0].textContent).toBe("Acton & Chiswick Markets Calendar 2027");
-    expect(elements[1].textContent).toBe("Acton & Chiswick Markets Calendar 2027");
+    expect(elements[0].textContent).toBe("Greater London Markets & Events Calendar 2027");
+    expect(elements[1].textContent).toBe("Greater London Markets & Events Calendar 2027");
   });
 });
 
