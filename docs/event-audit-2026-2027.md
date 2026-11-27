@@ -62,7 +62,7 @@ The following decisions were applied to the calendar after comparing the availab
 
 ## 5. 2026 event-link audit
 
-### 4.1 Generated date-specific URLs checked
+### 5.1 Generated date-specific URLs checked
 
 The 2026 schedule generated 58 date-specific Chiswick Calendar URLs for recurring events. The links were generated from the actual 2026 recurrence rules and checked against the live site.
 
@@ -87,7 +87,7 @@ Other checked URLs still returned their requested date, while some older pages r
 
 No 2026 schedule entry was found to contain a hard-coded 2027 event URL. The two W4 Winter Fair links were explicitly dated 2026 URLs and were replaced with the organiser's stable event page.
 
-### 4.2 Stable event destinations now used
+### 5.2 Stable event destinations now used
 
 The shared event catalogue uses stable, non-date-specific destinations. Annual schedule entries do not need to repeat the same URL for Duck Pond festive dates or the two Winter Fair sessions.
 
@@ -106,7 +106,7 @@ The shared event catalogue uses stable, non-date-specific destinations. Annual s
 
 All ten destinations in the table were opened successfully during the link audit. The eight Duck Pond festive dates use the official Chiswick location page and retain their individual 10:00–15:00 time overrides. The two Winter Fair sessions remain separate dates and times but use the same stable organiser page.
 
-### 4.3 Link policy
+### 5.3 Link policy
 
 - Prefer a stable organiser page or market profile for recurring events.
 - Use a date-specific listing only for a genuinely one-off event when no stable event page exists and the dated page has been verified.
@@ -115,7 +115,7 @@ All ten destinations in the table were opened successfully during the link audit
 
 ## 6. Source register
 
-The following sources informed the schedule and link decisions. The link audit's stable-destination table in section 4.2 records the destinations currently used by the calendar.
+The following sources informed the schedule and link decisions. The link audit's stable-destination table in section 5.2 records the destinations currently used by the calendar.
 
 - Flower Market official calendar: https://chiswickflowermarket.com/calendar/
 - Flower Market visitor FAQ: https://chiswickflowermarket.com/frequently-asked-questions-visitors/
