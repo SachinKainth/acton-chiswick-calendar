@@ -180,12 +180,14 @@ Primary organiser sources:
 
 These are genuine organiser announcements, unlike recurrence-generated third-party calendar pages. The Open Art Show's 4–9 February dates are published; Chelsea Art Market's Spring 2027 return is published but its exact date is not.
 
-### Scope decision still required
+### Scope decision and next design decisions
 
-Before adding these events to the live annual schedule, decide:
+The project owner has chosen **Greater London** as the geographic scope for the expanded calendar. This is a deliberate change from the original Acton & Chiswick focus; it does not mean every London event should be included.
 
-1. **Geography:** remain Acton and Chiswick, expand to West London, or include selected events across Greater London.
-2. **Event types:** markets only, or also include curated exhibitions such as Open Art Show, fairs, pop-ups and similar public shopping/creative events.
-3. **Selection policy:** whether to include only public visitor events with confirmed dates and locations, and whether recurring or date-TBC events belong in a separate watchlist rather than the calendar.
+The following product decisions still need to be settled before implementation:
 
-Until that scope is agreed, keep both events in this candidate register and do not add them to `js/data/2027/calendar.js`. If the remit changes, update the application title, README, event taxonomy, filters/legend and source policy together rather than quietly mixing London-wide events into an Acton & Chiswick calendar.
+1. **Event types:** include markets only, or also curated exhibitions (such as Open Art Show), fairs, pop-ups and similar public shopping/creative events. The Open Art Show is an exhibition rather than a market, so its inclusion depends on this decision.
+2. **Selection policy:** define what makes an event relevant enough to include (for example, public visitor access, meaningful market/fair/exhibition character, and a reliable organiser source).
+3. **Date confidence:** decide how to display recurring events and date-TBC announcements. A confirmed season or recurrence should not be presented as a confirmed individual date; consider a separate watchlist for announcements that cannot yet be placed on a calendar.
+
+The Greater London geography is agreed, but neither candidate is added to `js/data/2027/calendar.js` by this documentation change. Before implementation, update the application title, README, event taxonomy, filters/legend and source policy together so the product's new remit is explicit.
