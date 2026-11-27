@@ -80,6 +80,26 @@ export const individualEvents = [
 		area: "chiswick",
 		class: "art",
 		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-11-20",
+		name: "W4 Art & Design Winter Fair",
+		location: "Christchurch Acton Green",
+		time: "18:00–21:00",
+		area: "chiswick",
+		class: "winterfair",
+		link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-20/"
+	},
+
+	{
+		date: "2026-11-21",
+		name: "W4 Art & Design Winter Fair",
+		location: "Christchurch Acton Green",
+		time: "10:30–18:00",
+		area: "chiswick",
+		class: "winterfair",
+		link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-21/"
 	}
 
 ]

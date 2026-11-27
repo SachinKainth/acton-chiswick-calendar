@@ -87,6 +87,28 @@ describe("eventsForSunday", () => {
 
 describe("getEventsForDate", () => {
 
+  test("includes the W4 Art & Design Winter Fair on both published dates with their separate times", () => {
+    const friday = events.getEventsForDate(new Date(2026, 10, 20));
+    const saturday = events.getEventsForDate(new Date(2026, 10, 21));
+
+    const fridayFair = friday.find(event => event.name === "W4 Art & Design Winter Fair");
+    const saturdayFair = saturday.find(event => event.name === "W4 Art & Design Winter Fair");
+
+    expect(fridayFair).toMatchObject({
+      location: "Christchurch Acton Green",
+      time: "18:00–21:00",
+      class: "winterfair",
+      link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-20/"
+    });
+    expect(saturdayFair).toMatchObject({
+      location: "Christchurch Acton Green",
+      time: "10:30–18:00",
+      class: "winterfair",
+      link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-21/"
+    });
+  });
+
+
   test("contains all four announced 2026 Chiswick Open Art Market dates", () => {
     const artEvents = events.individualEvents.filter(event => event.name === "Art");
 
