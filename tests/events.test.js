@@ -180,11 +180,12 @@ describe("getEventsForDate", () => {
     ]);
   });
 
-  test("includes all four published 2026 Open Art Spaces market dates", () => {
+  test("includes organiser-announced 2026 Open Art Spaces Chiswick dates", () => {
     const artDates = [
       "2026-03-29",
       "2026-05-31",
-      "2026-08-30",
+      "2026-08-02",
+      "2026-11-01",
       "2026-11-29"
     ];
 
@@ -199,6 +200,30 @@ describe("getEventsForDate", () => {
       expect(artEvent).toBeDefined();
       expect(artEvent.link).toBe("https://www.openartspaces.co.uk/market");
     });
+  });
+
+  test("uses the homepage's 09:00 opening for the 6 December Flower Market only", () => {
+    const december = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
+    expect(december.find(event => event.name === "Flowers").time).toBe("09:00–15:30");
+    const november = eventEngine.getEventsForDate(new Date(2026, 10, 1), calendar2026);
+    expect(november.find(event => event.name === "Flowers").time).toBe("09:30–15:30");
+  });
+
+  test("adds Duck Pond festive dates using the organiser's 10:00–15:00 listings", () => {
+    const festiveDates = [
+      "2026-12-05", "2026-12-06", "2026-12-19", "2026-12-20",
+      "2026-12-21", "2026-12-22", "2026-12-23", "2026-12-24"
+    ];
+    festiveDates.forEach(date => {
+      const [year, month, day] = date.split("-").map(Number);
+      const events = eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2026);
+      const duckPond = events.find(event => event.name === "Duck Pond");
+      expect(duckPond).toBeDefined();
+      expect(duckPond.time).toBe("10:00–15:00");
+      expect(duckPond.link).toBe("https://duckpondmarket.com/chiswick");
+    });
+    const decemberSixth = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
+    expect(decemberSixth.filter(event => event.name === "Duck Pond")).toHaveLength(1);
   });
 
   test("includes the W4 Art & Design Winter Fair on its two confirmed dates", () => {
@@ -242,7 +267,7 @@ describe("getEventsForDate", () => {
         ).length;
       }
     }
-    expect(count).toBe(131);
+    expect(count).toBe(139);
   });
 
   test("2027 has no invented 2026 one-off events", () => {
