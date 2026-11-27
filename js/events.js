@@ -49,7 +49,37 @@ export const individualEvents = [
 		time: "11:00–16:00",
 		area: "chiswick",
 		class: "art",
-		link: "https://chiswickcalendar.co.uk/event/open-art-market-chiswick-high-road/"
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-05-31",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-08-30",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
+	},
+
+	{
+		date: "2026-11-29",
+		name: "Art",
+		location: "Chiswick High Road",
+		time: "11:00–16:00",
+		area: "chiswick",
+		class: "art",
+		link: "https://www.openartspaces.co.uk/market"
 	}
 
 ]
