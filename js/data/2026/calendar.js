@@ -68,10 +68,5 @@ export const calendarData = {
   ],
   weeklyEvents: [
     { eventId: "foodMarket", skipDates: ["2026-04-05"] }
-  ],
-  reviewNotes: [
-    "Flower Market is not held in January. Normal winter hours are 09:30–15:30; the official homepage specifically advertises the 6 December 2026 Christmas Market as 09:00–15:30, so that date has an explicit exception.",
-    "Duck Pond festive dates (5, 6, 19–24 December 2026) use Duck Pond's own 10:00–15:00 listings in preference to the venue's blanket 10:00–16:00 listing. The regular 6 December occurrence is suppressed to avoid duplication.",
-    "Open Art Spaces organiser updates support Chiswick collaborations on 2 August and 1 November; the previously listed 30 August date was not supported by the organiser evidence reviewed."
   ]
 };
