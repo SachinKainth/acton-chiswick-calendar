@@ -28,7 +28,7 @@ describe("Calendar integration", () => {
 
     const links = Array.from(document.querySelectorAll(".day a"));
     expect(links.length).toBeGreaterThan(0);
-    expect(links.every(link => /^https?:\\/\\//.test(link.href))).toBe(true);
+    expect(links.every(link => /^https?:\/\//.test(link.href))).toBe(true);
   });
 
   test("renders 2027 without carrying over the 2026 one-off events", async () => {
