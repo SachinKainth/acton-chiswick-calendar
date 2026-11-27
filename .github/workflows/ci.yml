@@ -45,6 +45,7 @@ jobs:
         run: |
           DEPLOYED_AT="$(date -u +'%Y-%m-%d %H:%M UTC')"
           printf 'globalThis.CALENDAR_BUILD_INFO = { sha: "%s", deployedAt: "%s" };\n' "$BUILD_SHA" "$DEPLOYED_AT" > js/build-meta.js
+          sed -i "s/__BUILD_SHA__/${BUILD_SHA}/g" index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.1.0
