@@ -78,7 +78,7 @@ The review separates standing recurrence rules from individually published dates
 | Open Art Spaces | Organiser updates found relate to 2026 Chiswick collaborations only. | No 2027 dates to add. |
 | W4 Art & Design Winter Fair | Official site remains focused on the 2026 fair. | No 2027 dates to add. |
 
-The 2027 schedule remains provisional overall. The strongest evidence is for standing monthly/weekly recurrence and the Car Boot Sale's first three published dates; this is not the same as confirmation of every future market date. No new 2027 one-off events have been added.
+The 2027 schedule remains provisional overall. The strongest evidence is for standing monthly/weekly recurrence and the Car Boot Sale's first three published dates; this is not the same as confirmation of every future market date. At the time of this initial readiness review, no additional 2027 one-off events had been added.
 
 ## 6. 2026 event-link audit
 
@@ -190,3 +190,53 @@ Primary organiser sources:
 - Chelsea Art Market: https://www.openartspaces.co.uk/chelsea-art-market
 
 The Open Art Show dates are represented as individual daily entries; no special multi-day event type is required. The Chelsea Art Market will be considered for inclusion once its exact date is announced.
+
+
+## 10. Greater London 2027 event additions — 27 November 2026
+
+A focused discovery pass identified further public-facing Greater London markets and events with specific 2027 dates published by their organisers. The dates below are represented as individual daily entries. Where the organiser has not published 2027 opening hours, the calendar deliberately leaves the time blank rather than carrying forward last year's hours.
+
+| Event | Confirmed 2027 dates | Venue | Category / treatment |
+|---|---|---|---|
+| London Art Fair | 20–24 January | Business Design Centre, Islington | Art market. Only public days are included; the 19 January preview is excluded. Published daily opening hours are recorded. |
+| The Decorative Fair – Winter | 19–24 January | Evolution London, Battersea Park | Specialist fair. Published daily opening hours are recorded. |
+| The Decorative Fair – Spring | 11–16 May | Evolution London, Battersea Park | Specialist fair. Dates published; 2027 hours not yet stated on the event page. |
+| The Decorative Fair – Autumn | 28 September–3 October | Evolution London, Battersea Park | Specialist fair. Dates published; 2027 hours not yet stated on the event page. |
+| Adams Antiques Fair | 24 January; 28 February; 21 March; 18 April; 16 May; 13 June; 4 July; 12 September; 3 October; 7 November; 12 December | Royal Horticultural Halls, central London | Antiques market. Organiser publishes all 11 dates and standard 10:00–16:30 hours; no August date is listed. |
+| Local Makers Market | 6–7 February; 3 April; 1 May; 5 June; 3 July; 7 August; 4 September; 20–21 November; 27 November | Abney Public Hall, Stoke Newington; Corner Corner, Canada Water; Christchurch Hall, Wanstead | Makers & artisan markets. London dates only; Norwich and Cambridge dates are excluded. The organiser says its markets are free to visit. 11:00–16:00 is recorded where shown; the Wanstead listing has no published time. |
+| CADA Art & Antiques Fair | 18–21 March | Chelsea Old Town Hall, King's Road | Specialist fair. Daily opening hours are recorded from the organiser's page. |
+| Affordable Art Fair – Battersea Spring | 3–7 March | Evolution London, Battersea Park | Art market. Dates and venue confirmed; 2027 opening hours are not yet published. |
+| Affordable Art Fair – Hampstead | 5–9 May | Lower Fairground Site, Hampstead Heath | Art market. Dates and venue confirmed; 2027 opening hours are not yet published. |
+| Affordable Art Fair – Battersea Autumn | 13–17 October | Evolution London, Battersea Park | Art market. Dates and venue confirmed; 2027 opening hours are not yet published. |
+| London Coffee Festival | 15–16 May (public sessions) | The Truman Brewery, Brick Lane | Specialist food-and-drink fair. The event runs 13–16 May, but 13–14 May are industry days and are not included as public calendar entries. |
+| Foodies Festival – Syon Park | 29–31 May | Syon Park, Brentford | Food and drink fair/festival, including an artisan market. |
+| Kensington Antiques Fair | 30 May | Kensington Town Hall | Antiques market. General visitor hours are 10:30–15:30; early-bird entry is not used as the public opening time. |
+| The Treasure House Fair | 23–29 June | Royal Hospital Chelsea | Art, antiques and design fair. Preview day and general-admission dates are included, with the published daily hours. |
+| British Art Fair | 23–26 September | Saatchi Gallery, King's Road | Art market. Dates and venue confirmed; the organiser has not yet published daily opening hours. |
+| Spirit of Christmas Fair | 1–7 November | Olympia, Hammersmith Road | Christmas shopping fair. Dates confirmed; daily hours are not yet published. |
+
+### Source register for the new dates
+
+- London Art Fair: https://www.businessdesigncentre.co.uk/event/london-art-fair-2027/
+- The Decorative Fair: https://decorativefair.com/plan-your-visit/ and https://decorativefair.com/spring-fair/ and https://decorativefair.com/autumn-fair/
+- Adams Antiques Fairs: https://www.adamsantiquesfairs.com/fair-dates
+- Local Makers Market: https://localmakers.uk/markets
+- CADA Art & Antiques Fair: https://www.cotswolds-antiques-art.com/cada-fairs
+- Affordable Art Fair: https://affordableartfair.com/london/
+- London Coffee Festival: https://www.londoncoffeefestival.com/visiting
+- Foodies Festival: https://foodiesfestival.com/
+- Kensington Antiques Fair: https://kensingtonantiquesfair.co.uk/
+- The Treasure House Fair: https://www.treasurehousefair.com/visitors
+- British Art Fair: https://www.britishartfair.co.uk/fair-information
+- Spirit of Christmas Fair: https://www.spiritofchristmasfair.co.uk/
+
+### Inclusion and exclusion decisions
+
+- Only events with published 2027 dates and credible organiser or venue evidence are included. Dates generated by third-party recurring-event pages are not treated as confirmation.
+- Local Makers Market entries are limited to Greater London venues; the organiser's Norwich and Cambridge dates are not included.
+- The London Coffee Festival's two industry-only days are excluded; only its public Saturday and Sunday sessions are listed.
+- The London Antique Rug & Textile Art Fair is co-located within The Decorative Fair's Winter edition, and Tribal Art London is hosted within its Autumn edition. They are not duplicated as separate calendar entries.
+- The Chelsea Art Market remains excluded until its exact date is announced.
+- Opening hours are omitted when the organiser has not published 2027 hours. No 2026 hours have been copied forward.
+
+These additions increase the 2027 rendered event total from 126 to 214. The 2026 historical schedule remains unchanged, and `ACTIVE_YEAR` remains 2026.
