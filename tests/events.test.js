@@ -325,13 +325,26 @@ describe("getEventsForDate", () => {
     festiveDates.forEach(date => {
       const [year, month, day] = date.split("-").map(Number);
       const events = eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2026);
-      const duckPond = events.find(event => event.name === "Duck Pond");
+      const duckPond = events.find(event => event.name === "Duck Pond Christmas Market");
       expect(duckPond).toBeDefined();
       expect(duckPond.time).toBe("10:00–15:00");
+      expect(duckPond.class).toBe("duckchristmas");
       expect(duckPond.link).toBe("https://duckpondmarket.com/chiswick");
     });
     const decemberSixth = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
-    expect(decemberSixth.filter(event => event.name === "Duck Pond")).toHaveLength(1);
+    expect(decemberSixth.filter(event => event.name === "Duck Pond Christmas Market")).toHaveLength(1);
+    expect(decemberSixth.some(event => event.name === "Duck Pond")).toBe(false);
+  });
+
+  test("keeps the regular Duck Pond recurrence separate from its Christmas Market", () => {
+    const regular = eventEngine.getEventsForDate(new Date(2026, 10, 1), calendar2026);
+    expect(regular.some(event => event.name === "Duck Pond" && event.class === "duck")).toBe(true);
+    expect(regular.some(event => event.name === "Duck Pond Christmas Market")).toBe(false);
+
+    const festive = eventEngine.getEventsForDate(new Date(2026, 11, 5), calendar2026);
+    expect(festive.some(event => event.name === "Duck Pond Christmas Market" &&
+      event.class === "duckchristmas")).toBe(true);
+    expect(festive.some(event => event.name === "Duck Pond")).toBe(false);
   });
 
   test("includes the W4 Art & Design Winter Fair on its two confirmed dates", () => {
