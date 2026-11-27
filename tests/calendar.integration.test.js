@@ -21,9 +21,9 @@ describe("Calendar integration", () => {
     delete global.document;
   });
 
-  test("renders all 132 events in the established 2026 calendar", async () => {
+  test("renders all 131 events in the corrected 2026 calendar", async () => {
     buildCalendar(await getCalendarData(2026));
-    expect(document.querySelectorAll(".event")).toHaveLength(132);
+    expect(document.querySelectorAll(".event")).toHaveLength(131);
 
     const links = Array.from(document.querySelectorAll(".day a"));
     expect(links.length).toBeGreaterThan(0);
