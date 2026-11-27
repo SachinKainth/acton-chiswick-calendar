@@ -1,1 +1,1 @@
-globalThis.CALENDAR_BUILD_INFO = { sha: "517fd051078e91de65fe1971e5181847a9164d32", deployedAt: "2026-11-27 20:24 UTC" };
+globalThis.CALENDAR_BUILD_INFO = { sha: "146049719b20fe8ab3aa6d42d8d9255926ba0963", deployedAt: "2026-11-27 20:30 UTC" };
