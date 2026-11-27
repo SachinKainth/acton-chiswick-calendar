@@ -56,7 +56,7 @@ export const calendarData = {
       }
     },
     { sunday: 1, eventId: "duckPond", exclude: { dates: ["2026-12-06"] } },
-    { sunday: 1, eventId: "carBoot", skipMonths: [0] },
+    { sunday: 1, eventId: "carBoot", exclude: { months: [1] } },
     { sunday: 2, eventId: "antiques" },
     { sunday: 3, eventId: "cheese" },
     { sunday: 4, eventId: "foodSt" }
