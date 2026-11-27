@@ -22,9 +22,9 @@ describe("Calendar integration", () => {
     delete global.document;
   });
 
-  test("renders all 139 events in the corrected 2026 calendar", async () => {
+  test("renders all 138 events in the corrected 2026 calendar", async () => {
     buildCalendar(await getCalendarData(2026));
-    expect(document.querySelectorAll(".event")).toHaveLength(139);
+    expect(document.querySelectorAll(".event")).toHaveLength(138);
 
     const links = Array.from(document.querySelectorAll(".day a"));
     expect(links.length).toBeGreaterThan(0);
@@ -36,7 +36,7 @@ describe("Calendar integration", () => {
 
     expect(document.querySelectorAll(".month")).toHaveLength(12);
     expect(document.querySelectorAll(".day")).toHaveLength(365);
-    expect(document.querySelectorAll(".event")).toHaveLength(121);
+    expect(document.querySelectorAll(".event")).toHaveLength(120);
 
     const eventLabels = Array.from(document.querySelectorAll(".event"))
       .map(event => event.textContent);
@@ -44,6 +44,19 @@ describe("Calendar integration", () => {
     expect(eventLabels.some(label => label.includes("Makers Market"))).toBe(false);
     expect(eventLabels.some(label => label.includes("Art | Chiswick High Road"))).toBe(false);
     expect(eventLabels.some(label => label.includes("W4 Art & Design Winter Fair"))).toBe(false);
+  });
+
+  test("excludes The Food Market on the Sunday after Christmas in both years", async () => {
+    const calendar2026 = await getCalendarData(2026);
+    const calendar2027 = await getCalendarData(2027);
+    const closures = [
+      [new Date(2026, 11, 27), calendar2026],
+      [new Date(2027, 11, 26), calendar2027]
+    ];
+    closures.forEach(([date, calendar]) => {
+      expect(getEventsForDate(date, calendar)
+        .some(event => event.name === "The Food Market")).toBe(false);
+    });
   });
 
   test("excludes The Food Market on Easter Sunday 2027 under the organiser's policy", async () => {
