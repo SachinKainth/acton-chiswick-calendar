@@ -12,7 +12,7 @@ export function highlightToday(date, today, dayDiv) {
 export function setPageTitle(year) {
   const elements = document.getElementsByClassName("title");
   for (let i = 0; i < elements.length; i++) {
-    elements[i].textContent = "Acton & Chiswick Markets Calendar " + year;
+    elements[i].textContent = "Greater London Markets & Events Calendar " + year;
   }
 }
 

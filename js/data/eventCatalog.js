@@ -27,6 +27,7 @@ export const eventCatalog = {
       12: { time: "09:30–15:30" }
     },
     area: "chiswick",
+    category: "markets",
     class: "flowers",
     link: "https://chiswickflowermarket.com/calendar/"
   },
@@ -35,6 +36,7 @@ export const eventCatalog = {
     location: "Chiswick House & Gardens",
     time: "10:00–16:00",
     area: "chiswick",
+    category: "makers-artisan",
     class: "duck",
     link: "https://duckpondmarket.com/chiswick"
   },
@@ -43,6 +45,7 @@ export const eventCatalog = {
     location: "Chiswick House & Gardens",
     time: "10:00–15:00",
     area: "chiswick",
+    category: "fairs",
     class: "duckchristmas",
     link: "https://duckpondmarket.com/chiswick"
   },
@@ -51,6 +54,7 @@ export const eventCatalog = {
     location: "Chiswick School",
     time: "06:30–12:30",
     area: "chiswick",
+    category: "markets",
     class: "car",
     link: "https://chiswickcarbootsale.com/",
     appendDateToLink: false
@@ -60,6 +64,7 @@ export const eventCatalog = {
     location: "Old Market Place",
     time: "09:00–15:00",
     area: "chiswick",
+    category: "markets",
     class: "antiques",
     link: "https://chiswickcalendar.co.uk/this-is-chiswick/places/chiswick-antiques-vintage-market/"
   },
@@ -68,6 +73,7 @@ export const eventCatalog = {
     location: "Old Market Place",
     time: "09:30–15:00",
     area: "chiswick",
+    category: "markets",
     class: "cheese",
     link: "https://www.chiswickcheesemarket.uk/"
   },
@@ -76,6 +82,7 @@ export const eventCatalog = {
     location: "Old Market Place",
     time: "11:00–16:00",
     area: "chiswick",
+    category: "markets",
     class: "streetfood",
     link: "https://www.foodst.co.uk/"
   },
@@ -84,6 +91,7 @@ export const eventCatalog = {
     location: "Pavilion, Market Drive",
     time: "10:00–14:00",
     area: "chiswick",
+    category: "markets",
     class: "foodmarket",
     link: "https://thefoodmarketchiswick.com/"
   },
@@ -92,6 +100,7 @@ export const eventCatalog = {
     location: "Churchfield Road",
     time: "10:00–16:30",
     area: "acton",
+    category: "makers-artisan",
     class: "makers",
     link: "https://www.youractonbid.co.uk/your-acton-makers-market/"
   },
@@ -100,6 +109,7 @@ export const eventCatalog = {
     location: "Chiswick High Road",
     time: "11:00–16:00",
     area: "chiswick",
+    category: "art-markets",
     class: "art",
     link: "https://www.openartspaces.co.uk/market",
     appendDateToLink: false
@@ -108,7 +118,16 @@ export const eventCatalog = {
     name: "W4 Art & Design Winter Fair",
     location: "Christchurch Acton Green",
     area: "chiswick",
+    category: "fairs",
     class: "winterfair",
     link: "https://www.w4artanddesign.co.uk/"
+  },
+  openArtShow: {
+    name: "Open Art Show",
+    location: "JM Gallery, 230 Portobello Road, London W11 1LJ",
+    area: "london",
+    category: "exhibitions",
+    class: "exhibition",
+    link: "https://www.openartspaces.co.uk/show"
   }
 };

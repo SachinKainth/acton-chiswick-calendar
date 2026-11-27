@@ -1,10 +1,13 @@
 // Provisional 2027 schedule. The recurring pattern is carried forward from
-// 2026; individual 2027 event dates have deliberately not been invented.
+// 2026; add individual dates only when published by event organisers.
 // Recurring exclusions use 1-based months and ISO YYYY-MM-DD dates.
 export const calendarData = {
   year: 2027,
   status: "provisional",
-  individualEvents: [],
+  individualEvents: [
+    ...["2027-02-04", "2027-02-05", "2027-02-06", "2027-02-07", "2027-02-08", "2027-02-09"]
+      .map(date => ({ date, eventId: "openArtShow" }))
+  ],
   monthlyEvents: [
     { sunday: 1, eventId: "flowers", exclude: { months: [1] } },
     { sunday: 1, eventId: "duckPond" },

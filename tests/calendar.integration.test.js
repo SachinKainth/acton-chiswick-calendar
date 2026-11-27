@@ -11,7 +11,7 @@ describe("Calendar integration", () => {
   let dom;
 
   beforeEach(() => {
-    dom = new JSDOM('<div id="calendar"></div>');
+    dom = new JSDOM('<section class="category-legend"><span>Markets</span><span>Makers &amp; artisan markets</span><span>Art markets</span><span>Fairs</span><span>Exhibitions</span><span>Pop-ups</span></section><div id="calendar"></div>');
     global.window = dom.window;
     global.document = dom.window.document;
   });
@@ -31,12 +31,12 @@ describe("Calendar integration", () => {
     expect(links.every(link => /^https?:\/\//.test(link.href))).toBe(true);
   });
 
-  test("renders 2027 without carrying over the 2026 one-off events", async () => {
+  test("renders 2027 with the six announced Open Art Show dates", async () => {
     buildCalendar(await getCalendarData(2027));
 
     expect(document.querySelectorAll(".month")).toHaveLength(12);
     expect(document.querySelectorAll(".day")).toHaveLength(365);
-    expect(document.querySelectorAll(".event")).toHaveLength(120);
+    expect(document.querySelectorAll(".event")).toHaveLength(126);
 
     const eventLabels = Array.from(document.querySelectorAll(".event"))
       .map(event => event.textContent);
@@ -44,6 +44,13 @@ describe("Calendar integration", () => {
     expect(eventLabels.some(label => label.includes("Makers Market"))).toBe(false);
     expect(eventLabels.some(label => label.includes("Art | Chiswick High Road"))).toBe(false);
     expect(eventLabels.some(label => label.includes("W4 Art & Design Winter Fair"))).toBe(false);
+    expect(document.querySelectorAll('.event[data-category="exhibitions"]')).toHaveLength(6);
+    expect(eventLabels.filter(label => label.includes("Open Art Show"))).toHaveLength(6);
+  });
+
+  test("renders all six category labels", async () => {
+    buildCalendar(await getCalendarData(2027));
+    expect(document.querySelectorAll(".category-legend span")).toHaveLength(6);
   });
 
   test("excludes The Food Market on the Sunday after Christmas in both years", async () => {
