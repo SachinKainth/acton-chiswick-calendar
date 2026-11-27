@@ -129,7 +129,7 @@ export const eventCatalog = {
     category: "exhibitions",
     class: "exhibition",
     link: "https://www.openartspaces.co.uk/show"
-  }
+  },
   londonArtFair: { name:"London Art Fair", location:"Business Design Centre, 52 Upper Street, London N1 0QH", area:"london", category:"art-markets", class:"art", link:"https://www.londonartfair.co.uk/" },
   decorativeFair: { name:"The Decorative Fair", location:"Evolution London, Battersea Park, London SW11 4NJ", area:"london", category:"fairs", class:"fair", link:"https://decorativefair.com/" },
   adamsAntiques: { name:"Adams Antiques Fair", location:"Royal Horticultural Halls, Elverton Street, London SW1 2PB", time:"10:00–16:30", area:"london", category:"markets", class:"antiques", link:"https://www.adamsantiquesfairs.com/fair-dates" },
