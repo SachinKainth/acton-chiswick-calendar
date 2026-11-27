@@ -1,76 +1,76 @@
-import * as calendar from "../js/calendar.js"
-import * as dom from "../js/dom.js"
-import * as events from "../js/events.js"
+import * as calendar from "../js/core/calendar.js";
+import * as dom from "../js/core/dom.js";
+import * as eventEngine from "../js/core/eventEngine.js";
+import { getCalendarData } from "../js/data/index.js";
 
 describe("buildCalendar", () => {
+  let calendarData;
+
+  beforeAll(async () => {
+    calendarData = await getCalendarData(2026);
+  });
+
   beforeEach(() => {
-    // Reset the DOM for each test
-    document.body.innerHTML = `<div id="calendar"></div>`
-    jest.spyOn(dom, "highlightToday")
-    jest.spyOn(events, "getEventsForDate").mockReturnValue([])
-  })
+    document.body.innerHTML = '<div id="calendar"></div>';
+    jest.spyOn(dom, "highlightToday");
+    jest.spyOn(eventEngine, "getEventsForDate").mockReturnValue([]);
+  });
 
   afterEach(() => {
-    jest.restoreAllMocks()
-  })
+    jest.restoreAllMocks();
+  });
 
   test("creates a calendar container with 12 months", () => {
-    calendar.buildCalendar()
-    const calendarEl = document.getElementById("calendar")
-    expect(calendarEl).not.toBeNull()
+    calendar.buildCalendar(calendarData);
+    const calendarEl = document.getElementById("calendar");
+    expect(calendarEl).not.toBeNull();
+    expect(calendarEl.querySelectorAll(".month")).toHaveLength(12);
+  });
 
-    // Assuming each month gets a .month container
-    const months = calendarEl.querySelectorAll(".month")
-    expect(months.length).toBe(12)
-  })
-
-  test("each month contains day divs", () => {
-    calendar.buildCalendar()
-    const calendarEl = document.getElementById("calendar")
-    const dayDivs = calendarEl.querySelectorAll(".day")
-    expect(dayDivs.length).toBeGreaterThan(0) // there should be some day divs
-  })
+  test("creates one day element for every day in the selected year", () => {
+    calendar.buildCalendar(calendarData);
+    expect(document.querySelectorAll("#calendar .day")).toHaveLength(365);
+  });
 
   test("calls highlightToday for each day", () => {
-    calendar.buildCalendar()
-    expect(dom.highlightToday).toHaveBeenCalled()
-  })
+    calendar.buildCalendar(calendarData);
+    expect(dom.highlightToday).toHaveBeenCalledTimes(365);
+  });
 
-  test("attaches events to day divs if present", () => {
-    // Mock one day to have an event
-    const mockEvent = [{ name: "Test Event" }]
-    events.getEventsForDate.mockImplementation((date) => {
-      return date.getDate() === 1 ? mockEvent : []
-    })
+  test("attaches events to the relevant day", () => {
+    eventEngine.getEventsForDate.mockImplementation(date =>
+      date.getDate() === 1 ? [{ name: "Test Event", class: "test" }] : []
+    );
 
-    calendar.buildCalendar()
+    calendar.buildCalendar(calendarData);
 
-    const calendarEl = document.getElementById("calendar")
-    const firstDay = calendarEl.querySelector(".day")
-    expect(firstDay.innerHTML).toContain("Test Event")
-  })
+    const firstDay = document.querySelector("#month0 .day");
+    expect(firstDay.innerHTML).toContain("Test Event");
+  });
 
-  test("creates link to website if link exists", () => {
-    // Mock one day to have an event with a link
-    const mockEvent = [{ name: "Test Event", link: "http://event.com/" }]
-    events.getEventsForDate.mockImplementation((date) => {
-      return date.getDate() === 1 ? mockEvent : []
-    })
+  test("creates a link when an event has a link", () => {
+    eventEngine.getEventsForDate.mockImplementation(date =>
+      date.getDate() === 1
+        ? [{ name: "Test Event", class: "test", link: "https://example.com/" }]
+        : []
+    );
 
-    calendar.buildCalendar()
+    calendar.buildCalendar(calendarData);
 
-    const calendarEl = document.getElementById("calendar")
-    const firstDay = calendarEl.querySelector(".day")
-    const link = firstDay.querySelector("a")
+    const link = document.querySelector("#month0 .day a");
+    expect(link).not.toBeNull();
+    expect(link.href).toBe("https://example.com/");
+  });
 
-    expect(link).not.toBeNull()
-    expect(link.href).toBe("http://event.com/")
-  })
+  test("clears old calendar content before rendering", () => {
+    const calendarEl = document.getElementById("calendar");
+    calendarEl.innerHTML = "<p>Old content</p>";
+    calendar.buildCalendar(calendarData);
+    expect(calendarEl.innerHTML).not.toContain("Old content");
+  });
 
-  test("calendar element is empty before building", () => {
-    const calendarEl = document.getElementById("calendar")
-    calendarEl.innerHTML = "<p>Old content</p>"
-    calendar.buildCalendar()
-    expect(calendarEl.innerHTML).not.toContain("Old content")
-  })
-})
+  test("does nothing when the calendar container is missing", () => {
+    document.body.innerHTML = "";
+    expect(() => calendar.buildCalendar(calendarData)).not.toThrow();
+  });
+});
