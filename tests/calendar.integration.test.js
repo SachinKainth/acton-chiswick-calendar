@@ -11,7 +11,7 @@ describe("Calendar integration", () => {
   let dom;
 
   beforeEach(() => {
-    dom = new JSDOM('<div id="calendar"></div>');
+    dom = new JSDOM('<section class="category-legend"><span>Markets</span><span>Makers &amp; artisan markets</span><span>Art markets</span><span>Fairs</span><span>Exhibitions</span><span>Pop-ups</span></section><div id="calendar"></div>');
     global.window = dom.window;
     global.document = dom.window.document;
   });
