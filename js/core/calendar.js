@@ -4,6 +4,11 @@ import { months } from "../constants.js";
 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+const categoryLabels = {
+  markets: "Market", "makers-artisan": "Makers & artisan market",
+  "art-markets": "Art market", fairs: "Fair", exhibitions: "Exhibition", "pop-ups": "Pop-up"
+};
+
 export function buildCalendar(calendarData, today = new Date()) {
   const calendar = dom.getCalendarElement();
   if (!calendar) return;
@@ -68,16 +73,15 @@ function renderEvents(date, calendarData) {
   dayEvents.forEach(eventData => {
     const event = document.createElement("div");
     event.className = "event " + eventData.class;
-
+    if (eventData.category) event.dataset.category = eventData.category;
+    const details = [eventData.location, eventData.time].filter(Boolean).join(" | ");
+    const category = eventData.category && categoryLabels[eventData.category]
+      ? '<span class="event-category">' + categoryLabels[eventData.category] + "</span> " : "";
+    const content = category + "<strong>" + eventData.name + "</strong>" + (details ? " | " + details : "");
     if (eventData.link) {
-      event.innerHTML =
-        '<a href="' + eventData.link + '" target="_blank"><strong>' +
-        eventData.name + "</strong> | " + eventData.location + " | " +
-        eventData.time + "</a>";
+      event.innerHTML = '<a href="' + eventData.link + '" target="_blank" rel="noopener noreferrer">' + content + "</a>";
     } else {
-      event.innerHTML =
-        "<strong>" + eventData.name + "</strong> | " +
-        eventData.location + " | " + eventData.time;
+      event.innerHTML = content;
     }
 
     eventsDiv.appendChild(event);
