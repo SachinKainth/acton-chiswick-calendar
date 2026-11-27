@@ -325,11 +325,13 @@ describe("getEventsForDate", () => {
     festiveDates.forEach(date => {
       const [year, month, day] = date.split("-").map(Number);
       const events = eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2026);
-      const duckPond = events.find(event => event.name === "Duck Pond Christmas Market");
-      expect(duckPond).toBeDefined();
-      expect(duckPond.time).toBe("10:00–15:00");
-      expect(duckPond.class).toBe("duckchristmas");
-      expect(duckPond.link).toBe("https://duckpondmarket.com/chiswick");
+      const duckPondChristmasMarket = events.find(
+        event => event.name === "Duck Pond Christmas Market"
+      );
+      expect(duckPondChristmasMarket).toBeDefined();
+      expect(duckPondChristmasMarket.time).toBe("10:00–15:00");
+      expect(duckPondChristmasMarket.class).toBe("duckchristmas");
+      expect(duckPondChristmasMarket.link).toBe("https://duckpondmarket.com/chiswick");
     });
     const decemberSixth = eventEngine.getEventsForDate(new Date(2026, 11, 6), calendar2026);
     expect(decemberSixth.filter(event => event.name === "Duck Pond Christmas Market")).toHaveLength(1);
