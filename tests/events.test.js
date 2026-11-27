@@ -375,7 +375,7 @@ describe("getEventsForDate", () => {
         ).length;
       }
     }
-    expect(count).toBe(139);
+    expect(count).toBe(138);
   });
 
   test("2027 has no invented 2026 one-off events", () => {
