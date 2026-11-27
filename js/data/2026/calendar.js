@@ -24,10 +24,7 @@ export const calendarData = {
       "2026-12-24"
     ].map(date => ({
       date,
-      eventId: "duckPond",
-      overrides: {
-        time: "10:00–15:00",
-      }
+      eventId: "duckPondChristmas"
     })),
     {
       date: "2026-11-20",
