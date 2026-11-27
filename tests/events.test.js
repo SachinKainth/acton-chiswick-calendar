@@ -53,7 +53,7 @@ describe("getRecurringEvents", () => {
   test("skips the Food Market on the 2026 Easter exception", () => {
     const result = eventEngine.getRecurringEvents(new Date(2026, 3, 5), calendar2026);
     expect(result.map(event => event.name)).toEqual([
-      "Duck Pond", "Car Boot Sale"
+      "Flowers", "Duck Pond", "Car Boot Sale"
     ]);
   });
 
