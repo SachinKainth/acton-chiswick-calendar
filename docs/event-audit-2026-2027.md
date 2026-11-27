@@ -163,53 +163,30 @@ The following sources informed the schedule and link decisions. The link audit's
 
 The audit records the selected source for each discrepancy rather than implying that all sources agree. It is a dated snapshot and should be updated when organisers publish new information.
 
-## 9. Potential expansion beyond Acton and Chiswick
+## 9. Greater London scope and event taxonomy
 
-The current application and annual schedule are focused on markets in Acton and Chiswick. A possible next direction is to make it a broader markets and fairs calendar, including selected events elsewhere in London. This would be a change of scope, not simply another 2027 date audit.
-
-Two Open Art Spaces events illustrate the opportunity:
-
-| Event | Published details | Classification | Schedule decision |
-|---|---|---|---|
-| Open Art Show | 4–9 February 2027, JM Gallery, 230 Portobello Road, London W11 1LJ. | Curated multi-day art exhibition / sales event; not an outdoor market. | Confirmed by the organiser, but outside the current Acton/Chiswick geographic scope. Candidate only if the calendar expands to include exhibitions and wider London events. |
-| Chelsea Art Market | Spring 2027, Duke of York Square, Chelsea; 11:00–16:00. The organiser says the date is TBC. | Outdoor art and makers market. | The 2027 return is confirmed, but there is no date to schedule yet. Candidate if the calendar expands beyond Acton and Chiswick. |
-
-Primary organiser sources:
-- Open Art Show: https://www.openartspaces.co.uk/show
-- Chelsea Art Market: https://www.openartspaces.co.uk/chelsea-art-market
-
-These are genuine organiser announcements, unlike recurrence-generated third-party calendar pages. The Open Art Show's 4–9 February dates are published; Chelsea Art Market's Spring 2027 return is published but its exact date is not.
-
-### Agreed scope for 2027 onward
-
-The project owner has chosen **Greater London** as the geographic scope for the expanded calendar, starting with the 2027 schedule. The 2026 calendar remains the historical Acton & Chiswick record; it will not be retrospectively expanded or reworked.
+The application is branded **Greater London Markets & Events Calendar**. Greater London is the geographic scope for the application, with expanded event coverage beginning in 2027. The 2026 schedule remains the historical Acton and Chiswick record: its dates, recurrence rules and event details are retained unchanged.
 
 The agreed event categories are:
 
-- Markets: food, farmers', antiques, vintage and craft markets.
-- Makers and artisan markets.
-- Art markets.
-- Fairs, including seasonal, Christmas, design and specialist fairs.
-- Exhibitions.
-- Pop-ups and curated temporary shopping events.
+- **Markets:** food, farmers', antiques, vintage and craft markets.
+- **Makers & artisan markets.**
+- **Art markets.**
+- **Fairs:** seasonal, Christmas, design and specialist fairs.
+- **Exhibitions.**
+- **Pop-ups & curated temporary shopping.**
 
-Include public visitor events with credible organiser information. The categories describe the event's nature; they should not imply that an exhibition is a market.
+Include public visitor events supported by credible organiser information. Categories describe the nature of an event and are separate from its presentation class/colour. An exhibition can therefore retain its own event colour while being classified semantically as an exhibition. The calendar displays the category alongside the event; the existing event-specific colour key remains independent.
 
-Use explicit date-confidence distinctions:
+### 2027 events identified
 
-- **Confirmed:** the organiser has published the exact date and venue.
-- **Date TBC:** the organiser has announced the event or season, but not the exact date. Keep it in an announcements/watchlist view, not as a dated calendar entry.
-- **Recurring:** the organiser publishes a regular pattern, but an individual occurrence has not necessarily been separately confirmed. Display the recurrence as provisional where appropriate.
-
-### 2027 candidates identified
-
-| Event | Published details | Category | 2027 treatment |
+| Event | Published details | Category | Schedule treatment |
 |---|---|---|---|
-| Open Art Show | 4–9 February 2027, JM Gallery, 230 Portobello Road, London W11 1LJ. | Exhibition | Exact dates and venue are published by the organiser. Add to the 2027 schedule when the expanded event model is implemented. |
-| Chelsea Art Market | Spring 2027, Duke of York Square, Chelsea; 11:00–16:00. Exact date TBC. | Art market | Record in the announcements/watchlist view; do not create a dated calendar event until the organiser publishes the date. |
+| Open Art Show | 4–9 February 2027, JM Gallery, 230 Portobello Road, London W11 1LJ. | Exhibition | Added as six individual consecutive daily entries, each using the organiser's published event details. |
+| Chelsea Art Market | Spring 2027, Duke of York Square, Chelsea; 11:00–16:00. Exact date TBC. | Art market | Do not add to the dated calendar until the organiser publishes the exact date. No announcements or watchlist feature will be built. |
 
 Primary organiser sources:
 - Open Art Show: https://www.openartspaces.co.uk/show
 - Chelsea Art Market: https://www.openartspaces.co.uk/chelsea-art-market
 
-The 2027 expansion should update the application title, README, event taxonomy, filters/legend and source policy together. Keep the 2026 schedule and its existing Acton & Chiswick remit unchanged.
+The Open Art Show dates are represented as individual daily entries; no special multi-day event type is required. The Chelsea Art Market will be considered for inclusion once its exact date is announced.
