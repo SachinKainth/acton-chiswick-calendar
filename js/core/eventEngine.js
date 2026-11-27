@@ -18,9 +18,9 @@ function resolveEvent(scheduledEvent, date) {
 
   const {
     appendDateToLink: annualAppendsDate,
-    overridesByDate: annualOverridesByDate = {},
     ...annualOverrides
   } = scheduledEvent.overrides || {};
+  const annualOverridesByDate = scheduledEvent.overridesByDate || {};
 
   const {
     appendDateToLink: catalogMonthAppendsDate,
