@@ -1,0 +1,33 @@
+{
+  "name": "acton-and-chiswick-calendar",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "<h1>Markets in Acton and Chiswick</h1>",
+  "main": "calendar.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SachinKainth/acton-chiswick-calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SachinKainth/acton-chiswick-calendar/issues"
+  },
+  "homepage": "https://github.com/SachinKainth/acton-chiswick-calendar#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.2",
+    "@eslint/js": "^10.0.1",
+    "babel-jest": "^30.3.0",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "node-fetch": "^3.3.2"
+  }
+}
