@@ -18,7 +18,7 @@ describe("getRecurringEvents", () => {
       "Flowers", "Duck Pond", "Car Boot Sale", "The Food Market"
     ]);
     expect(result[0].link).toBe(
-      "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-02-01"
+      "https://chiswickflowermarket.com/calendar/"
     );
     expect(result[0].time).toBe("09:30–15:30");
     expect(result[0]).not.toHaveProperty("appendDateToLink");
@@ -34,6 +34,26 @@ describe("getRecurringEvents", () => {
     const summer = eventEngine.getRecurringEvents(new Date(2026, 5, 7), calendar2026);
     expect(winter.find(event => event.name === "Flowers").time).toBe("09:30–15:30");
     expect(summer.find(event => event.name === "Flowers").time).toBe("09:00–16:00");
+  });
+
+  test("uses stable event links instead of expired date-specific listings", () => {
+    const firstSunday = eventEngine.getRecurringEvents(new Date(2026, 1, 1), calendar2026);
+    expect(firstSunday.find(event => event.name === "Flowers").link)
+      .toBe("https://chiswickflowermarket.com/calendar/");
+    expect(firstSunday.find(event => event.name === "Duck Pond").link)
+      .toBe("https://duckpondmarket.com/chiswick");
+
+    const antiques = eventEngine.getRecurringEvents(new Date(2026, 0, 11), calendar2026);
+    expect(antiques.find(event => event.name === "Antiques").link)
+      .toBe("https://chiswickcalendar.co.uk/this-is-chiswick/places/chiswick-antiques-vintage-market/");
+
+    const cheese = eventEngine.getRecurringEvents(new Date(2026, 0, 18), calendar2026);
+    expect(cheese.find(event => event.name === "Cheese").link)
+      .toBe("https://www.chiswickcheesemarket.uk/");
+
+    const foodSt = eventEngine.getRecurringEvents(new Date(2026, 0, 25), calendar2026);
+    expect(foodSt.find(event => event.name === "FoodSt").link)
+      .toBe("https://www.foodst.co.uk/");
   });
 
   test("uses the official Car Boot organiser website without appending a date", () => {
@@ -105,13 +125,13 @@ describe("getRecurringEvents", () => {
 
     expect(june.time).toBe("09:00–16:00");
     expect(june.link).toBe(
-      "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-06-07"
+      "https://chiswickflowermarket.com/calendar/"
     );
 
     expect(july.time).toBe("09:00–16:00");
     expect(july.location).toBe("Annual default location");
     expect(july.link).toBe(
-      "https://chiswickcalendar.co.uk/event/chiswick-flower-market-old-market-place/2026-07-05"
+      "https://chiswickflowermarket.com/calendar/"
     );
   });
 
@@ -237,13 +257,13 @@ describe("getEventsForDate", () => {
       location: "Christchurch Acton Green",
       time: "18:00–21:00",
       class: "winterfair",
-      link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-20/"
+      link: "https://www.w4artanddesign.co.uk/"
     });
     expect(saturdayFair).toMatchObject({
       location: "Christchurch Acton Green",
       time: "10:30–18:00",
       class: "winterfair",
-      link: "https://chiswickcalendar.co.uk/event/w4-art-design-winter-fair-2026-christchurch-acton-green/2026-11-21/"
+      link: "https://www.w4artanddesign.co.uk/"
     });
   });
 
