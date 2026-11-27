@@ -393,7 +393,13 @@ describe("getEventsForDate", () => {
     expect(count).toBe(138);
   });
 
-  test("2027 has no invented 2026 one-off events", () => {
-    expect(calendar2027.individualEvents).toEqual([]);
+  test("includes the organiser-announced Open Art Show on all six published dates", () => {
+    const dates = ["2027-02-04", "2027-02-05", "2027-02-06", "2027-02-07", "2027-02-08", "2027-02-09"];
+    dates.forEach(date => {
+      const [year, month, day] = date.split("-").map(Number);
+      const event = eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2027).find(item => item.name === "Open Art Show");
+      expect(event).toMatchObject({category:"exhibitions",class:"exhibition",location:"JM Gallery, 230 Portobello Road, London W11 1LJ",link:"https://www.openartspaces.co.uk/show"});
+      expect(event).not.toHaveProperty("time");
+    });
   });
 });
