@@ -36,7 +36,7 @@ The following decisions were applied to the calendar after comparing the availab
 | Chiswick Antiques & Vintage Market | Second Sunday monthly; checked 8 November 2026 listing. | 09:00–15:00, Old Market Place / south side of High Road. | Recurrence carried forward provisionally. |
 | Chiswick Cheese Market | Third Sunday monthly; official site lists all 2026 monthly dates. | 09:30–15:00, Old Market Place. | Recurrence carried forward provisionally. |
 | FoodSt | Fourth Sunday monthly; checked October and December 2026 listings. | 11:00–16:00, Old Market Place. | Recurrence carried forward provisionally. |
-| The Food Market | Weekly Sunday market; checked official site and location page. | 10:00–14:00, Pavilion, Market Drive, Chiswick W4 2RX. | No 2027 Easter closure is assumed. The 2026 Easter exclusion remains; 2027 Easter operation must be confirmed with the organiser. |
+| The Food Market | Weekly Sunday market; checked official site and location page. | 10:00–14:00, Pavilion, Market Drive, Chiswick W4 2RX. | The organiser's trader application states that the market trades every week except Easter Sunday and the Sunday after Christmas. Exclude Easter Sunday, 28 March 2027, under that standing policy. |
 | Acton Makers Market | Your Acton BID page lists 18 April, 20 June, 19 September and 12 December 2026; no 2027 dates found. | 10:00–16:30, Churchfield Road, Acton W3 6AY. Dates subject to change. | Do not invent 2027 dates. |
 | Open Art Spaces | Organiser updates support Chiswick collaborations on 29 March, 31 May, 2 August, 1 November and 29 November 2026. The unsupported 30 August entry has been removed. | 11:00–16:00, Chiswick High Road / Flower Market collaboration dates as announced. | No 2027 dates found; do not invent. |
 | W4 Art & Design Winter Fair | Official site confirms 20 and 21 November 2026. | 20 November 18:00–21:00; 21 November 10:30–18:00; Christchurch Acton Green, South Parade, Chiswick W4 5LG. | No 2027 dates found; do not invent. |
@@ -107,16 +107,16 @@ The following sources informed the schedule and link decisions. The link audit's
 - Chiswick Car Boot Sale official site: https://chiswickcarbootsale.com/home
 - Chiswick Cheese Market visitor information: https://www.chiswickcheesemarket.uk/visit-us/
 - The Food Market official site: https://thefoodmarketchiswick.com/
+- The Food Market organiser's trader application (weekly trading exception policy): https://www.surveymonkey.com/r/FoodMarketChiswick
 - Your Acton BID Makers Market: https://www.youractonbid.co.uk/your-acton-makers-market/
 - Open Art Spaces market: https://www.openartspaces.co.uk/market
 - W4 Art & Design: https://www.w4artanddesign.co.uk/
 
 ## 6. Outstanding checks and confidence
 
-1. Confirm the 2027 Food Market Easter Sunday operating status with the organiser. Do not infer a 2027 closure from the 2026 exclusion.
-2. Recheck date-specific event pages and links when 2027 dates are announced. A recurring URL pattern is not proof that a future page has been published.
-3. Treat all carried-forward 2027 recurring schedules as provisional until organisers confirm them.
-4. The Duck Pond festive dates and selected 10:00–15:00 hours are based on the organiser's individual listings; the venue's blanket 10:00–16:00 Christmas programme remains a conflicting source.
-5. No 2027 dates were found for Acton Makers Market, Open Art Spaces or W4 Art & Design Winter Fair at the time of this audit; do not invent them.
+1. Recheck date-specific event pages and links when 2027 dates are announced. A recurring URL pattern is not proof that a future page has been published.
+2. Treat all carried-forward 2027 recurring schedules as provisional until organisers confirm them.
+3. The Duck Pond festive dates and selected 10:00–15:00 hours are based on the organiser's individual listings; the venue's blanket 10:00–16:00 Christmas programme remains a conflicting source.
+4. No 2027 dates were found for Acton Makers Market, Open Art Spaces or W4 Art & Design Winter Fair at the time of this audit; do not invent them.
 
 The audit records the selected source for each discrepancy rather than implying that all sources agree. It is a dated snapshot and should be updated when organisers publish new information.
