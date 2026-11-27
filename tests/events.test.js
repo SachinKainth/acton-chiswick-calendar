@@ -202,6 +202,23 @@ describe("getRecurringEvents", () => {
     )).toThrow("Event exclusion dates must be valid YYYY-MM-DD dates");
   });
 
+  test("rejects legacy exclusion fields rather than silently ignoring them", () => {
+    const legacyCalendar = {
+      year: 2026,
+      monthlyEvents: [{
+        sunday: 1,
+        eventId: "flowers",
+        skipMonths: [0]
+      }],
+      weeklyEvents: [],
+      individualEvents: []
+    };
+
+    expect(() => eventEngine.getRecurringEvents(
+      new Date(2026, 1, 1), legacyCalendar
+    )).toThrow("Use event.exclude.months and event.exclude.dates");
+  });
+
   test("returns no recurring events on a non-Sunday", () => {
     expect(eventEngine.getRecurringEvents(new Date(2026, 1, 2), calendar2026)).toEqual([]);
   });
