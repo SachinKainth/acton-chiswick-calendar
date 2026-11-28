@@ -2,7 +2,7 @@
 
 A static vanilla-JavaScript calendar for markets and public events across Greater London. The 2026 schedule is retained as the historical Acton and Chiswick record; the expanded geographic coverage begins with 2027.
 
-Live application: https://sachinkainth.github.io/acton-chiswick-calendar/
+Live application: https://sachinkainth.github.io/greater-london-markets-events-calendar/
 
 ## Architecture
 
