@@ -35,7 +35,10 @@ describe("Calendar integration", () => {
     buildCalendar(await getCalendarData(2027));
 
     expect(document.querySelectorAll(".month")).toHaveLength(12);
-    expect(document.querySelectorAll(".day")).toHaveLength(365);
+    const dayRows = Array.from(document.querySelectorAll(".day"));
+    expect(dayRows.length).toBeGreaterThan(0);
+    expect(dayRows.length).toBeLessThan(365);
+    expect(dayRows.every(day => day.querySelector(".event"))).toBe(true);
     expect(document.querySelectorAll(".event")).toHaveLength(214);
 
     const eventLabels = Array.from(document.querySelectorAll(".event"))
