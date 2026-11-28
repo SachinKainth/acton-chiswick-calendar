@@ -1,5 +1,5 @@
 {
-  "name": "acton-and-chiswick-calendar",
+  "name": "greater-london-markets-events-calendar",
   "version": "1.0.0",
   "type": "module",
   "description": "Markets, fairs, exhibitions and public events across Greater London.",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SachinKainth/acton-chiswick-calendar.git"
+    "url": "git+https://github.com/SachinKainth/greater-london-markets-events-calendar.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SachinKainth/acton-chiswick-calendar/issues"
+    "url": "https://github.com/SachinKainth/greater-london-markets-events-calendar/issues"
   },
-  "homepage": "https://github.com/SachinKainth/acton-chiswick-calendar#readme",
+  "homepage": "https://github.com/SachinKainth/greater-london-markets-events-calendar#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.29.2",
     "@eslint/js": "^10.0.1",
