@@ -22,9 +22,17 @@ export function buildCalendar(calendarData, today = new Date()) {
 
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(calendarData.year, month, day);
+      const dayEvents = eventEngine.getEventsForDate(date, calendarData);
+      const isToday = date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate();
+
+      // Keep today's row as a navigation target even when it has no events.
+      if (dayEvents.length === 0 && !isToday) continue;
+
       const weekday = date.getDay();
       const dayDiv = createDay(date, weekday, today);
-      const eventsDiv = renderEvents(date, calendarData);
+      const eventsDiv = renderEvents(dayEvents);
 
       dayDiv.appendChild(eventsDiv);
       monthDiv.appendChild(dayDiv);
@@ -64,11 +72,9 @@ function createDay(date, weekday, today) {
   return dayDiv;
 }
 
-function renderEvents(date, calendarData) {
+function renderEvents(dayEvents) {
   const eventsDiv = document.createElement("div");
   eventsDiv.className = "events";
-
-  const dayEvents = eventEngine.getEventsForDate(date, calendarData);
 
   dayEvents.forEach(eventData => {
     const event = document.createElement("div");
