@@ -10,6 +10,8 @@ describe("buildCalendar", () => {
     calendarData = await getCalendarData(2026);
   });
 
+  const outsideCalendarYear = new Date(2025, 0, 1);
+
   beforeEach(() => {
     document.body.innerHTML = '<div id="calendar"></div>';
     jest.spyOn(dom, "highlightToday");
@@ -21,20 +23,42 @@ describe("buildCalendar", () => {
   });
 
   test("creates a calendar container with 12 months", () => {
-    calendar.buildCalendar(calendarData);
+    calendar.buildCalendar(calendarData, outsideCalendarYear);
     const calendarEl = document.getElementById("calendar");
     expect(calendarEl).not.toBeNull();
     expect(calendarEl.querySelectorAll(".month")).toHaveLength(12);
   });
 
-  test("creates one day element for every day in the selected year", () => {
-    calendar.buildCalendar(calendarData);
-    expect(document.querySelectorAll("#calendar .day")).toHaveLength(365);
+  test("renders only days with events while retaining all month headings", () => {
+    eventEngine.getEventsForDate.mockImplementation(date =>
+      date.getDate() === 1 ? [{ name: "Test Event", class: "test" }] : []
+    );
+
+    calendar.buildCalendar(calendarData, outsideCalendarYear);
+
+    expect(document.querySelectorAll("#calendar .month")).toHaveLength(12);
+    expect(document.querySelectorAll("#calendar .day")).toHaveLength(12);
+    expect([...document.querySelectorAll("#calendar .date")]
+      .every(date => date.textContent.trim().startsWith("1 "))).toBe(true);
   });
 
-  test("calls highlightToday for each day", () => {
-    calendar.buildCalendar(calendarData);
-    expect(dom.highlightToday).toHaveBeenCalledTimes(365);
+  test("highlights only rendered days", () => {
+    eventEngine.getEventsForDate.mockImplementation(date =>
+      date.getDate() === 1 ? [{ name: "Test Event", class: "test" }] : []
+    );
+
+    calendar.buildCalendar(calendarData, outsideCalendarYear);
+
+    expect(dom.highlightToday).toHaveBeenCalledTimes(12);
+  });
+
+  test("retains an otherwise empty today row as the Today navigation target", () => {
+    const today = new Date(2026, 10, 28);
+
+    calendar.buildCalendar(calendarData, today);
+
+    expect(document.querySelectorAll("#calendar .day")).toHaveLength(1);
+    expect(document.querySelector("#today .date").textContent).toContain("28");
   });
 
   test("attaches events to the relevant day", () => {
