@@ -129,5 +129,17 @@ export const eventCatalog = {
     category: "exhibitions",
     class: "exhibition",
     link: "https://www.openartspaces.co.uk/show"
-  }
+  },
+  londonArtFair: { name:"London Art Fair", location:"Business Design Centre, 52 Upper Street, London N1 0QH", area:"london", category:"art-markets", class:"art", link:"https://www.londonartfair.co.uk/" },
+  decorativeFair: { name:"The Decorative Fair", location:"Evolution London, Battersea Park, London SW11 4NJ", area:"london", category:"fairs", class:"fair", link:"https://decorativefair.com/" },
+  adamsAntiques: { name:"Adams Antiques Fair", location:"Royal Horticultural Halls, Elverton Street, London SW1 2PB", time:"10:00–16:30", area:"london", category:"markets", class:"antiques", link:"https://www.adamsantiquesfairs.com/fair-dates" },
+  localMakers: { name:"Local Makers Market", area:"london", category:"makers-artisan", class:"makers", link:"https://localmakers.uk/markets" },
+  kensingtonAntiques: { name:"Kensington Antiques Fair", location:"Kensington Town Hall, Hornton Street, London W8 7NX", time:"10:30–15:30", area:"london", category:"markets", class:"antiques", link:"https://kensingtonantiquesfair.co.uk/" },
+  affordableArtFair: { name:"Affordable Art Fair", area:"london", category:"art-markets", class:"art", link:"https://affordableartfair.com/london/" },
+  cadaFair: { name:"CADA Art & Antiques Fair", location:"Chelsea Old Town Hall, King's Road, London SW3 5EE", area:"london", category:"fairs", class:"fair", link:"https://www.cotswolds-antiques-art.com/cada-fairs" },
+  foodiesFestival: { name:"Foodies Festival", location:"Syon Park, Brentford, London TW8 8JF", area:"london", category:"fairs", class:"fair", link:"https://foodiesfestival.com/" },
+  londonCoffeeFestival: { name:"London Coffee Festival", location:"The Truman Brewery, 15 Hanbury Street, London E1 6QR", area:"london", category:"fairs", class:"fair", link:"https://www.londoncoffeefestival.com/" },
+  treasureHouseFair: { name:"The Treasure House Fair", location:"Royal Hospital Chelsea, South Grounds, London SW3 4SR", area:"london", category:"fairs", class:"fair", link:"https://www.treasurehousefair.com/visitors" },
+  britishArtFair: { name:"British Art Fair", location:"Saatchi Gallery, King's Road, London SW3 4RY", area:"london", category:"art-markets", class:"art", link:"https://www.britishartfair.co.uk/fair-information" },
+  spiritOfChristmas: { name:"Spirit of Christmas Fair", location:"Olympia, Hammersmith Road, London W14 8UX", area:"london", category:"fairs", class:"fair", link:"https://www.spiritofchristmasfair.co.uk/" }
 };

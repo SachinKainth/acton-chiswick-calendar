@@ -67,7 +67,7 @@ Only changed fields need to be specified. This allows event timings and links to
 
 The 2026 dataset preserves the dates and recurrence rules from the original application, includes the four published Open Art Spaces dates and records the W4 Art & Design Winter Fair on 20–21 November.
 
-The 2027 dataset is deliberately marked provisional. Its recurring pattern is carried forward from 2026, and individually announced events are added only when their dates and venues are published. The Open Art Show is represented by six individual dates, 4–9 February 2027. The Food Market's Easter and post-Christmas closures follow the organiser's published policy.
+The 2027 dataset is deliberately marked provisional. Its recurring pattern is carried forward from 2026, and individually announced events are added only when their dates and venues are published. The Open Art Show is represented by six individual dates, 4–9 February 2027. Confirmed Greater London additions include Local Makers Market dates, Adams Antiques Fairs, The Decorative Fair, London Art Fair, Affordable Art Fair, specialist art and antiques fairs, food festivals and the Spirit of Christmas Fair. The Food Market's Easter and post-Christmas closures follow the organiser's published policy.
 
 Seasonal and special event dates must be verified against organiser information each year. In particular, don't assume all first-Sunday markets keep identical opening hours or schedules through the year.
 

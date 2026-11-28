@@ -101,6 +101,9 @@ body{
  .winterfair{
 	background: #e6d7ff;
 }
+ .fair{
+	background: #e6d7ff;
+}
  .category-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px;font-size:0.85em;}
  .category-legend span{padding:4px 8px;border:1px solid #ddd;border-radius:4px;background:#fff;}
  .event-category{display:inline-block;margin-right:4px;padding:1px 4px;border:1px solid rgba(0,0,0,0.25);border-radius:3px;font-size:0.75em;font-weight:normal;vertical-align:1px;}
