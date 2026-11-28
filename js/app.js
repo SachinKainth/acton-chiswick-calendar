@@ -11,7 +11,7 @@ function renderBuildInfo() {
   if (!footer || !buildInfo?.sha) return;
 
   const link = globalThis.document.createElement("a");
-  link.href = `https://github.com/SachinKainth/acton-chiswick-calendar/commit/${buildInfo.sha}`;
+  link.href = `https://github.com/SachinKainth/greater-london-markets-events-calendar/commit/${buildInfo.sha}`;
   link.textContent = buildInfo.sha === "development" ? "development" : buildInfo.sha.slice(0, 7);
   link.target = "_blank";
   link.rel = "noopener noreferrer";
