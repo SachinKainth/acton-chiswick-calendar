@@ -1,133 +1,227 @@
-body{
-	 font-family:Arial, sans-serif;
-	 margin:30px;
-	 background:#fafafa;
-}
- h1{
-	 text-align:center;
-	 margin-bottom:20px;
-}
- .controls{
-	 display:flex;
-	 flex-wrap:wrap;
-	 gap:20px;
-	 align-items:center;
-	 margin-bottom:20px;
-}
- .nav a{
-	 display:inline-block;
-	 padding:4px 6px;
-	 margin-right:10px;
-	 text-decoration:none;
-	 font-weight:bold;
-}
- .month{
-	 margin-bottom:40px;
-}
- .month h2{
-	 border-bottom:3px solid #333;
-	 padding-bottom:5px;
-}
- .day{
-	 display:flex;
-	 gap:15px;
-	 border-bottom:1px solid #ddd;
-	 padding:6px;
-}
- .date{
-	 width:80px;
-	 font-weight:bold;
-}
- .weekday {
-	 font-size: 0.75em;
-	 color: #555;
-	 margin-left: 4px;
-}
- .events{
-	 display:flex;
-	 flex-direction:column;
-	 gap:3px;
-}
- .event{
-	 padding:3px 6px;
-	 border-radius:4px;
-	 font-size:0.9em;
-	 max-width:500px;
-	 line-height:1.4;
-}
-/* weekend highlight */
- .saturday{
-	 background:#f4f4f4;
-}
- .sunday{
-	 background:#e9e9e9;
-}
-/* today highlight */
- .today{
-	 border:2px solid red;
-	 border-radius:4px;
-}
-/* event colours */
- .flowers{
-	background:#ffc0cb;
-}
- .antiques{
-	background:#d9b3ff;
-}
- .cheese{
-	background:#fff099;
-}
- .streetfood{
-	background:#ffb347;
-}
- .makers{
-	background:#add8e6;
-}
- .art{
-	background:#ccc148;
-}
- .car{
-	background:#48ecec;
-}
- .duck{
-	background:#f35840;
-}
- .duckchristmas{
-	background:#b8d8c0;
-}
- .foodmarket{
-	background: #b3b1b6;
-}
- .winterfair{
-	background: #e6d7ff;
-}
- .fair{
-	background: #e6d7ff;
-}
- .category-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px;font-size:0.85em;}
- .category-legend span{padding:4px 8px;border:1px solid #ddd;border-radius:4px;background:#fff;}
- .event-category{display:inline-block;margin-right:4px;padding:1px 4px;border:1px solid rgba(0,0,0,0.25);border-radius:3px;font-size:0.75em;font-weight:normal;vertical-align:1px;}
- .exhibition{background:#d7e8f5;}
- .legend{
-	 display:flex;
-	 gap:10px;
-	 margin-bottom:20px;
-	 flex-wrap:wrap;
-}
- .legend-item{
-	 padding:5px 10px;
-	 border-radius:4px;
-	 font-size:0.85em;
-}
- @media (max-width:700px){
-	 .day{
-		 flex-direction:column;
-	}
-	 .date{
-		 width:auto;
-	}
+* {
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: clamp(12px, 2.5vw, 30px);
+  background: #fafafa;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 4px 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  text-decoration: underline;
+}
+
+.nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: start;
+  gap: 20px;
+}
+
+.month {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.month h2 {
+  margin: 0 0 8px;
+  padding-bottom: 7px;
+  border-bottom: 3px solid #333;
+}
+
+.day {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.day:last-child {
+  border-bottom: 0;
+}
+
+.date {
+  flex: 0 0 48px;
+  width: auto;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.weekday {
+  display: block;
+  margin: 2px 0 0;
+  font-size: 0.75em;
+  font-weight: normal;
+  color: #555;
+}
+
+.events {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.event {
+  max-width: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.event a {
+  color: inherit;
+}
+
+/* Weekend highlight */
+.saturday {
+  background: #f4f4f4;
+}
+
+.sunday {
+  background: #e9e9e9;
+}
+
+/* Today highlight */
+.today {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+/* Event colours */
+.flowers {
+  background: #ffc0cb;
+}
+
+.antiques {
+  background: #d9b3ff;
+}
+
+.cheese {
+  background: #fff099;
+}
+
+.streetfood {
+  background: #ffb347;
+}
+
+.makers {
+  background: #add8e6;
+}
+
+.art {
+  background: #ccc148;
+}
+
+.car {
+  background: #48ecec;
+}
+
+.duck {
+  background: #f35840;
+}
+
+.duckchristmas {
+  background: #b8d8c0;
+}
+
+.foodmarket {
+  background: #b3b1b6;
+}
+
+.winterfair {
+  background: #e6d7ff;
+}
+
+.fair {
+  background: #e6d7ff;
+}
+
+.category-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85em;
+}
+
+.category-legend span {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.event-category {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 1px 4px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  font-size: 0.75em;
+  font-weight: normal;
+  vertical-align: 1px;
+}
+
+.exhibition {
+  background: #d7e8f5;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
 
 .build-info {
   margin-top: 24px;
@@ -144,4 +238,18 @@ body{
 .build-info a:hover,
 .build-info a:focus-visible {
   text-decoration: underline;
+}
+
+@media (max-width: 380px) {
+  #calendar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .month {
+    padding: 9px;
+  }
+
+  .date {
+    flex-basis: 42px;
+  }
 }
