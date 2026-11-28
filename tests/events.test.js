@@ -375,6 +375,25 @@ describe("getEventsForDate", () => {
     expect(result.some(event => event.name === "Makers Market")).toBe(true);
   });
 
+  test("includes the confirmed Greater London 2027 event dates", () => {
+    const get = date => {
+      const [year, month, day] = date.split("-").map(Number);
+      return eventEngine.getEventsForDate(new Date(year, month - 1, day), calendar2027);
+    };
+    expect(get("2027-01-20").map(event => event.name)).toEqual(
+      expect.arrayContaining(["London Art Fair", "The Decorative Fair – Winter"])
+    );
+    expect(get("2027-01-24").some(event => event.name === "Adams Antiques Fair")).toBe(true);
+    expect(get("2027-02-06").some(event => event.name === "Local Makers Market" && event.location === "Abney Public Hall, Stoke Newington, London")).toBe(true);
+    expect(get("2027-03-18").find(event => event.name === "CADA Art & Antiques Fair").time).toBe("12:00–20:00");
+    expect(get("2027-05-15").some(event => event.name === "London Coffee Festival")).toBe(true);
+    expect(get("2027-05-30").some(event => event.name === "Kensington Antiques Fair")).toBe(true);
+    expect(get("2027-06-23").find(event => event.name === "The Treasure House Fair").time).toBe("11:00–21:00");
+    expect(get("2027-09-26").some(event => event.name === "British Art Fair")).toBe(true);
+    expect(get("2027-11-07").some(event => event.name === "Spirit of Christmas Fair")).toBe(true);
+    expect(get("2027-11-27").find(event => event.name === "Local Makers Market").time).toBeUndefined();
+  });
+
   test("does not return an annual package's events for another year", () => {
     expect(eventEngine.getEventsForDate(new Date(2027, 3, 18), calendar2026)).toEqual([]);
   });
